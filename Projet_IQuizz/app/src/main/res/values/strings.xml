@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Projet_IQuizz</string>
+    <string name="userID">Identifiant</string>
+    <string name="password">Mot de passe</string>
+    <string name="confirmPassword">confirmation mot de passe</string>
+    <string name="connexion">Connexion</string>
+    <string name="nouveauCompte">Créer un compte</string>
 </resources>
