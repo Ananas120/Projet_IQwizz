@@ -10,8 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 import android.content.Context;
-import com.example.projetcoo.projet_iquizz.controller.Game;
 
+import com.example.projetcoo.projet_iquizz.controller.Game;
 import com.example.projetcoo.projet_iquizz.R;
 
 public class MainActivity extends AppCompatActivity {
