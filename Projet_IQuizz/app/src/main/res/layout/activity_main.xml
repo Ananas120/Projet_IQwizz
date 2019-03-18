@@ -5,64 +5,72 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/noir"
     tools:context=".controller.MainActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo" />
+    
     <TextView
-              android:layout_width="wrap_content"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_gravity="center"  
-              android:paddingTop="75dp"
-              android:textSize="33sp" 
+              style="@style/DefaultText"
+              android:gravity="center"
+              android:paddingTop="0dp"
               android:text="@string/userID"/>
 
     <EditText
-              android:id="@+id/userID"
-              android:layout_width="wrap_content"
+              android:id="@+id/get_userID"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_gravity="center"
+              style="@style/DefaultHint"
+              android:gravity="center"
               android:inputType="text"
-              android:textSize="30sp"
-              android:hint="@string/userID"/>
+              android:hint="@string/get_userID"/>
 
     <TextView
-              android:layout_width="wrap_content"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_gravity="center"
+              style="@style/DefaultHint"
+              android:gravity="center"
               android:paddingTop="10dp"
-              android:textSize="33sp" 
               android:text="@string/password"/>
 
     <EditText
-              android:id="@+id/password"
-              android:layout_width="wrap_content"
+              android:id="@+id/get_password"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_gravity="center"
+              style="@style/DefaultHint"
+              android:gravity="center"
               android:inputType="textPassword"
-              android:textSize="30sp"
-              android:hint="@string/password"/>
+              android:hint="@string/get_password"/>
 
-    <EditText
-        android:id="@+id/confirmPassword"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/connexion"
+        style="@style/DefaultText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="@string/confirmPassword"
-        android:inputType="textPassword"
-        android:textSize="30sp"
-        android:visibility="invisible" />
-    <Button
-            android:id="@+id/connexion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="30sp"
-            android:text="@string/connexion"/>
+        android:background="@drawable/default_bouton"
+        android:paddingLeft="25dp"
+        android:text="@string/connexion" />
+    
     <TextView
               android:id="@+id/nouveauCompte"
-              android:layout_width="wrap_content"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_gravity="center"
+              android:gravity="center"
+              style="@style/DefaultTextPetit"
               android:paddingTop="10dp"
-              android:textSize="28sp" 
               android:text="@string/nouveauCompte"/>
+    <CheckBox
+             android:id="@+id/resterConnecte"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              style="@style/DefaultText"
+              android:text="@string/resterConnecte"/>
+
 </LinearLayout>

@@ -9,6 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".controller.StatsActivity"/>
+        <activity android:name=".controller.FinQuizz" />
+        <activity android:name=".controller.Reprendre" />
+        <activity android:name=".controller.Compte" />
+        <activity android:name=".controller.QuestionActivity" />
+        <activity android:name=".controller.ListeQuizz" />
+        <activity android:name=".controller.ListeJoueurs" />
+        <activity android:name=".controller.Game" />
         <activity android:name=".controller.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.Game"></activity>
+        <activity android:name=".controller.NewCompte" />
     </application>
 
 </manifest>

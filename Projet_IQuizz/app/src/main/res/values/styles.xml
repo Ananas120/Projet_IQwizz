@@ -7,5 +7,29 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    
+    <style name="DefaultText">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/blanc</item>
+    </style>
+    
+    <style name="DefaultTextPetit" parent="DefaultText">
+        <item name="android:textSize">25sp</item>
+    </style>
+    <style name="DefaultTextMini" parent="DefaultText">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="DefaultTextGrand" parent="DefaultText">
+        <item name="android:textSize">35sp</item>
+    </style>
+        
+    <style name="DefaultHint" parent="DefaultText">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColorHint">@color/blanc</item>        
+    </style>
+    <style name="DefaultHintPetit" parent="DefaultHint">
+        <item name="android:textSize">20sp</item>
+    </style>
 
 </resources>

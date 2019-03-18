@@ -13,25 +13,27 @@ import android.content.Context;
 public class BDD extends SQLiteOpenHelper {
     public final String CREATE_TABLE_USER = "CREATE TABLE Utilisateurs ("
         + "Identifiant TEXT PRIMARY KEY, "
-        + "Password TEXT, "
-        + "Age INTEGER);";
+        + "Password TEXT NOT NULL, "
+        + "Age INTEGER NOT NULL);";
     public final String CREATE_TABLE_SCORE = "CREATE TABLE Scores ("
-        + "UtilisateurID TEXT, "
-        + "Categorie TEXT, "
-        + "Score INTEGER, "
-        + "Tentative INTEGER);";
+        + "UtilisateurID TEXT NOT NULL, "
+        + "Categorie TEXT NOT NULL, "
+        + "Explication TEXT, "
+        + "Valeur INTEGER DEFAULT 0, "
+        + "Tentative INTEGER DEFAULT 0);";
     public final String CREATE_TABLE_QUESTION = "CREATE TABLE Questions ("
         + "ID TEXT PRIMARY KEY, "
-        + "Categorie TEXT, "
-        + "Intitule TEXT, "
+        + "Categorie TEXT NOT NULL, "
+        + "Intitule TEXT NOT NULL, "
         + "FichierImage TEXT, "
-        + "Age INTEGER, "
+        + "Age INTEGER NOT NULL, "
         + "Expliquation TEXT);";
     public final String CREATE_TABLE_CHOIX = "CREATE TABLE Choix ("
-        + "QuestionID TEXT, "
-        + "Intitule TEXT, "
+        + "Numero INTEGER NOT NULL, "
+        + "QuestionID TEXT NOT NULL, "
+        + "Intitule TEXT DEFAULT '', "
         + "FichierImage TEXT, "
-        + "Score INTEGER);";
+        + "Score INTEGER DEFAULT 0);";
             
     public String NAME = null;
     public int VERSION;

@@ -8,38 +8,38 @@ import android.widget.*;
 import android.content.Intent;
 
 import com.example.projetcoo.projet_iquizz.R;
-import com.example.projetcoo.projet_iquizz.controller.NewCompte;
+import com.example.projetcoo.projet_iquizz.controller.MainActivity;
 import com.example.projetcoo.projet_iquizz.controller.Game;
 
-public class MainActivity extends AppCompatActivity {
+public class NewCompte extends AppCompatActivity {
 
     private Button connexion;
-    private TextView nouveauCompte;
+    private TextView existCompte;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_new_compte);
         
         connexion = (Button) findViewById(R.id.connexion);
-        nouveauCompte = (TextView) findViewById(R.id.nouveauCompte);
+        existCompte = (TextView) findViewById(R.id.existCompte);
         
         connexion.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                EditText userID = (EditText)findViewById(R.id.get_userID);
-                EditText password = (EditText)findViewById(R.id.get_password);
+                EditText userID = (EditText) findViewById(R.id.get_userID);
+                EditText password = (EditText) findViewById(R.id.get_password);
+                EditText c_password = (EditText) findViewById(R.id.get_confirm_password);
                 
-                Intent gameActivity = new Intent(MainActivity.this, Game.class);
+                Intent gameActivity = new Intent(NewCompte.this, Game.class);
                 startActivity(gameActivity);
             }
         });
         
-        nouveauCompte.setOnClickListener(new OnClickListener() {
+        existCompte.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                Intent newCompteActivity = new Intent(MainActivity.this, NewCompte.class);
-                startActivity(newCompteActivity);
+                Intent mainActivity = new Intent(NewCompte.this, MainActivity.class);
+                startActivity(mainActivity);
             }
         });
-        
     }
 }

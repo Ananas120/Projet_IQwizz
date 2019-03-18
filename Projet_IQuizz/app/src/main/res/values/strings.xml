@@ -1,8 +1,42 @@
 <resources>
     <string name="app_name">Projet_IQuizz</string>
-    <string name="userID">Identifiant</string>
-    <string name="password">Mot de passe</string>
-    <string name="confirmPassword">confirmation mot de passe</string>
+    <string name="userID">Identifiant :</string>
+    <string name="userAge">Âge :</string>
+    <string name="get_userAge">Entrez votre age</string>
+    <string name="get_userID">Entrez votre identifiant</string>
+    <string name="password">Mot de passe :</string>
+    <string name="get_password">Entrez votre \nmot de passe</string>
+    <string name="confirm_password">Confirmez votre \nmot de passe\n</string>
     <string name="connexion">Connexion</string>
     <string name="nouveauCompte">Créer un compte</string>
+    <string name="existCompte">Compte déjà créé ?</string>
+    <string name="resterConnecte">Se souvenir de moi</string>
+
+    <string name="sexe">Genre :</string>
+    <string name="sexeM">Homme</string>
+    <string name="sexeF">Femme</string>
+    <string name="sexeA">Autre</string>
+    <string name="sauver_modifs">Sauver les modifs</string>
+    <string name="gerer_amis">Mes Amis</string>
+    <string name="go_stats">Statistiques</string>
+    <string name="go_jeu">Retour au jeu</string>
+
+
+    <string name="jouer">Jouer</string>
+    <string name="defi">Défi</string>
+    <string name="reprendre">Reprendre</string>
+    <string name="deconnexion">Deconnexion</string>
+
+    <string name="choix_defi">Sélectionnez les utilisateurs à défier !</string>
+    <string name="lancer_defi">Lancer le défi</string>
+    <string name="defi_simultane">Jouer tour à tour</string>
+
+    <string name="choix_quizz">Sélectionnez le Quizz que vous voulez faire :</string>
+    <string name="lancer_quizz">Lancer le Quizz</string>
+    <string name="score_quizz">Fin du quizz !</string>
+
+    <string name="statistiques">Statistiques</string>
+    <string name="choisirQuizz">Liste de vos Quizz terminés :</string>
+    <string name="choisirAmis">Liste de vos Amis avec qui comparer :</string>
+
 </resources>

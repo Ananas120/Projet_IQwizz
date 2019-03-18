@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/noir"
+    tools:context=".controller.NewCompte">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo" />
+    <TableRow>
+        <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  style="@style/DefaultTextPetit"
+                  android:gravity="center"
+                  android:text="@string/userID"/>
+
+        <EditText
+                  android:id="@+id/get_userID"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  style="@style/DefaultHintPetit"
+                  android:gravity="center"
+                  android:inputType="text"
+                  android:hint="@string/get_userID"/>
+    </TableRow>
+    
+    <View 
+        android:layout_height="5dp" 
+        android:layout_width="match_parent"
+        android:background="#FF909090"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"/> 
+
+    
+    <TableRow>
+        <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  style="@style/DefaultTextPetit"
+                  android:gravity="center"
+                  android:text="@string/userAge"/>
+
+        <EditText
+                  android:id="@+id/get_userAge"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  style="@style/DefaultHintPetit"
+                  android:gravity="center"
+                  android:inputType="text"
+                  android:hint="@string/get_userAge"/>
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  style="@style/DefaultTextPetit"
+                  android:gravity="center"
+                  android:text="@string/sexe"/>
+        <RadioGroup
+                  android:id="@+id/get_userSexe"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content">
+>
+            <RadioButton
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  style="@style/DefaultTextPetit"
+                  android:gravity="center"
+                  android:text="@string/sexeM"/>
+            <RadioButton
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  style="@style/DefaultTextPetit"
+                  android:gravity="center"
+                  android:text="@string/sexeF"/>
+             <RadioButton
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  style="@style/DefaultTextPetit"
+                  android:gravity="center"
+                  android:text="@string/sexeA"/>
+
+        </RadioGroup>
+    </TableRow>
+    
+    <View 
+        android:layout_height="5dp" 
+        android:layout_width="match_parent"
+        android:background="#FF909090"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"/> 
+
+
+    <TableRow>
+        <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  style="@style/DefaultTextPetit"
+                  android:gravity="center"
+                  android:paddingTop="10dp"
+                  android:text="@string/password"/>
+
+        <EditText
+                  android:id="@+id/get_password"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  style="@style/DefaultHintPetit"
+                  android:gravity="center"
+                  android:inputType="textPassword"
+                  android:hint="@string/get_password"/>
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  style="@style/DefaultTextMini"
+                  android:gravity="center"
+                  android:paddingTop="10dp"
+                  android:text="@string/confirm_password"/>
+
+        <EditText
+                  android:id="@+id/get_confirm_password"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  style="@style/DefaultHintPetit"
+                  android:gravity="center"
+                  android:inputType="textPassword"
+                  android:hint="@string/confirm_password"/>
+    </TableRow>
+
+    <Button
+        android:id="@+id/connexion"
+        android:background="@drawable/default_bouton"
+        style="@style/DefaultTextPetit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/connexion" />
+    
+    <CheckBox
+             android:id="@+id/resterConnecte"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              style="@style/DefaultTextPetit"
+              android:text="@string/resterConnecte"/>
+
+    <TextView
+              android:id="@+id/existCompte"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              style="@style/DefaultTextPetit"
+              android:paddingTop="10dp"
+              android:text="@string/existCompte"/>
+
+</TableLayout>
