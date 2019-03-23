@@ -11,6 +11,8 @@ import android.content.Intent;
 import java.util.ArrayList;
 
 import com.example.projetcoo.projet_iquizz.R;
+import com.example.projetcoo.projet_iquizz.modele.BDD;
+import com.example.projetcoo.projet_iquizz.modele.Quizz;
 import com.example.projetcoo.projet_iquizz.modele.Question;
 import com.example.projetcoo.projet_iquizz.modele.Choix;
 
@@ -44,7 +46,7 @@ public class QuestionActivity extends AppCompatActivity implements OnClickListen
         texteQuestion = (TextView) findViewById(R.id.texte_question);
         
         boutonsChoix = new ArrayList<Button>();
-        questions = getQuestions();
+        questions = BDD.getInstance(this).getQuestions(new Quizz("Speed quizz Logique", "Logique", 5)); //getQuestions();
         
         numeroQuestion = 0;
         nombreQuestions = questions.size();
@@ -95,13 +97,13 @@ public class QuestionActivity extends AppCompatActivity implements OnClickListen
                 bouton.setTag(""+i);
                 bouton.setOnClickListener(this);
                 boutonsChoix.add(bouton);
+                layoutChoix.addView(boutonsChoix.get(i));
             }
         }
         
         texteQuestion.setText(qst.getText());
         for (int i = 0; i < boutonsChoix.size(); i++) {
             boutonsChoix.get(i).setText(qst.getChoix(i).getText());
-            layoutChoix.addView(boutonsChoix.get(i));
         }
     }
     

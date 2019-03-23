@@ -1,0 +1,83 @@
+CREATE TABLE IF NOT EXISTS Utilisateurs (
+    Login STRING PRIMARY KEY,
+    Password STRING NOT NULL,
+    Sexe INTEGER NOT NULL,
+    Age INTEGER NOT NULL,
+    AutoConnect INTEGER DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS Questions (
+    QuestionID INTEGER PRIMARY KEY,
+    Intitule STRING NOT NULL,
+    Categorie STRING NOT NULL,
+    ImageFilename STRING,
+    Explication STRING
+);
+
+CREATE TABLE IF NOT EXISTS Choix (
+    QuestionID INTEGER NOT NULL,
+    Numero INTEGER NOT NULL,
+    Valeur INTEGER DEFAULT 0,
+    Intitule STRING NOT NULL,
+    ImageFilename STRING,
+    PRIMARY KEY (QuestionID, Numero),
+    FOREIGN KEY (QuestionID) REFERENCES Questions(QuestionID)
+);
+
+CREATE TABLE IF NOT EXISTS Quizz (
+    NomQuizz STRING PRIMARY KEY,
+    Categorie STRING NOT NULL,
+    NbQuestions INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Defis (
+    DefiID INTEGER PRIMARY KEY,
+    NomQuizz STRING NOT NULL,
+    FOREIGN KEY (NomQuizz) REFERENCES Quizz(NomQuizz)
+); 
+
+CREATE TABLE IF NOT EXISTS QuizzExplication (
+    NomQuizz STRING NOT NULL,
+    TrancheScore STRING NOT NULL,
+    Explication NOT NULL,
+    PRIMARY KEY (NomQuizz, TrancheScore),
+    FOREIGN KEY (NomQuizz) REFERENCES Quizz(NomQuizz)
+); 
+
+CREATE TABLE IF NOT EXISTS DefiQuestions (
+    DefiID INTEGER NOT NULL,
+    QuestionID INTEGER NOT NULL,
+    Position INTEGER NOT NULL,
+    PRIMARY KEY (DefiID, QuestionID),
+    FOREIGN KEY (DefiID) REFERENCES Defis(DefiID),
+    FOREIGN KEY (QuestionID) REFERENCES Questions(QuestionID)
+);
+
+CREATE TABLE IF NOT EXISTS ChoixUtilisateur (
+    DefiID INTEGER NOT NULL,
+    QuestionID INTEGER NOT NULL,
+    Login STRING NOT NULL,
+    NumChoix INTEGER DEFAULT 0,
+    PRIMARY KEY (DefiID, QuestionID, Login),
+    FOREIGN KEY (DefiID) REFERENCES Defis(DefiID),
+    FOREIGN KEY (QuestionID) REFERENCES Questions(QuestionID), 
+    FOREIGN KEY (Login) REFERENCES Utilisateurs(Login)
+);
+
+CREATE TABLE IF NOT EXISTS Amis (
+    Login STRING NOT NULL,
+    AmiLogin STRING NOT NULL,
+    FOREIGN KEY (Login) REFERENCES Utilisateurs(Login),
+    FOREIGN KEY (AmiLogin) REFERENCES Utilisateurs(Login)
+); 
+
+CREATE TABLE IF NOT EXISTS DefiInfos (
+    DefiID INTEGER NOT NULL,
+    Login STRING NOT NULL,
+    Temps INTEGER DEFAULT 0,
+    Date STRING NOT NULL,
+    Score INTEGER DEFAULT -1,
+    PRIMARY KEY (DefiID, Login),
+    FOREIGN KEY (DefiID) REFERENCES Defis(DefiID),
+    FOREIGN KEY (Login) REFERENCES Utilisateurs(Login)
+); 

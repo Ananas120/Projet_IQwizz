@@ -9,12 +9,12 @@
     </style>
     
     <style name="DefaultText">
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">28sp</item>
         <item name="android:textColor">@color/blanc</item>
     </style>
     
     <style name="DefaultTextPetit" parent="DefaultText">
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">24sp</item>
     </style>
     <style name="DefaultTextMini" parent="DefaultText">
         <item name="android:textSize">20sp</item>

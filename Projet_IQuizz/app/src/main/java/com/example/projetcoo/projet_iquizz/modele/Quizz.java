@@ -12,7 +12,7 @@ public class Quizz {
         this.categorie = categorie;
     }
     
-    public Quizz(String nom, int nombreQuestions, String categorie) {
+    public Quizz(String nom, String categorie, int nombreQuestions) {
         this.nom = nom;
         this.nombreQuestions = nombreQuestions;
         this.categorie = categorie;

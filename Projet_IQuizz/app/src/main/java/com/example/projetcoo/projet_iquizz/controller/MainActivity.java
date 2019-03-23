@@ -10,6 +10,8 @@ import android.content.Intent;
 import com.example.projetcoo.projet_iquizz.R;
 import com.example.projetcoo.projet_iquizz.controller.NewCompte;
 import com.example.projetcoo.projet_iquizz.controller.Game;
+import com.example.projetcoo.projet_iquizz.modele.BDD;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(newCompteActivity);
             }
         });
+        //BDD test = BDD.getInstance(this, "requetes_generees.txt");
+        BDD test = BDD.getInstance(this);
         
     }
 }

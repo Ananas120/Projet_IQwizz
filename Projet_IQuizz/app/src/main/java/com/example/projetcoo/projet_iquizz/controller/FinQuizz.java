@@ -86,7 +86,7 @@ public class FinQuizz extends AppCompatActivity {
             ImageView image = new ImageView(this);
             image.setLayoutParams(params2);
             
-            if (questions.get(i).isCorrectChoice(defi.getChoice(i))) {
+            if (defi.isCorrectChoix(i)) {
                 score += 1;
                 image.setImageResource(R.drawable.bon_choix);
             } else {

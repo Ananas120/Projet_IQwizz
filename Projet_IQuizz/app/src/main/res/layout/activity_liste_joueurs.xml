@@ -40,7 +40,7 @@
     <TextView
         style="@style/DefaultText"
         android:layout_width="match_parent"
-        android:layout_height="115dp"
+        android:layout_height="110dp"
         android:gravity="center"
         android:paddingTop="20dp"
         android:text="@string/choix_defi" />
@@ -48,7 +48,7 @@
     <ListView
               android:id="@+id/liste_joueurs"
               android:layout_width="350dp"
-              android:layout_height="360dp"
+              android:layout_height="340dp"
               android:gravity="center"
               android:layout_gravity="center"
               android:paddingBottom="10dp"

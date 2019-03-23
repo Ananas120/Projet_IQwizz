@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import com.example.projetcoo.projet_iquizz.R;
 
 import com.example.projetcoo.projet_iquizz.modele.Quizz;
+import com.example.projetcoo.projet_iquizz.modele.BDD;
 import com.example.projetcoo.projet_iquizz.vue.QuizzAdapter;
 
 
@@ -28,7 +29,11 @@ public class ListeQuizz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_quizz);
         
-        liste = new ArrayList();
+        liste = BDD.getInstance(this).getQuizz();
+        for (int i = 0; i < liste.size(); i++) {
+            System.out.println(liste.get(i));
+        }
+        /*
         liste.add(new Quizz("Quizz complet", 40, "Toutes"));
         liste.add(new Quizz("Quizz n°2", "Categorie 1"));
         liste.add(new Quizz("Quizz n°3", "Categorie 1"));
@@ -39,7 +44,7 @@ public class ListeQuizz extends AppCompatActivity {
         liste.add(new Quizz("Quizz n°8", "Categorie 4"));
         liste.add(new Quizz("Quizz n°9", "Categorie 4"));
         liste.add(new Quizz("Quizz n°10", "Categorie 5"));
-        
+        */
         vue = (ListView) findViewById(R.id.liste_quizz);
 
         retour = (ImageView) findViewById(R.id.retour);

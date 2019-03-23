@@ -10,7 +10,7 @@ import android.content.Intent;
 import java.util.ArrayList;
 
 import com.example.projetcoo.projet_iquizz.R;
-
+import com.example.projetcoo.projet_iquizz.modele.BDD;
 import com.example.projetcoo.projet_iquizz.modele.Defi;
 import com.example.projetcoo.projet_iquizz.modele.Utilisateur;
 import com.example.projetcoo.projet_iquizz.vue.DefiAdapter;
@@ -27,7 +27,9 @@ public class Reprendre extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_quizz);
         
-        liste = getDefis();
+        liste = BDD.getInstance(this).
+                getDefis("qlanglois");
+        //getDefis();
         
         vue = (ListView) findViewById(R.id.liste_quizz);
 
