@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/noir"
+    android:orientation="vertical"
+    tools:context=".controller.AmisActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/retour"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="30"
+            android:layout_gravity="center"
+            android:contentDescription="@string/description_fleche"
+            android:src="@drawable/fleche_retour" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="30"
+            android:layout_gravity="center"
+            android:contentDescription="@string/description_nom_appli"
+            android:src="@drawable/nom_appli" />
+        <ImageView
+            android:id="@+id/parametres"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="30"
+            android:layout_gravity="center"
+            android:contentDescription="@string/description_parametres"
+            android:src="@drawable/engrenages" />
+        
+    </LinearLayout>
+    
+    <TextView
+        style="@style/DefaultTextGrand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/amis" />
+    
+    <ListView
+              android:id="@+id/liste_amis"
+              android:layout_width="350dp"
+              android:layout_height="200dp"
+              android:gravity="center"
+              android:layout_gravity="center"
+              android:paddingBottom="10dp"
+              android:divider="@android:color/transparent"
+              android:dividerHeight="7.5dp"
+              android:choiceMode="multipleChoice">
+    </ListView>
+
+    <Button
+        android:id="@+id/supprimer_amis"
+        style="@style/DefaultTextPetit"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/default_bouton"
+        android:gravity="center"
+        android:text="@string/supprimer_amis" />
+
+    <View 
+        android:layout_height="5dp" 
+        android:layout_width="match_parent"
+        android:background="#FF909090"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"/> 
+
+    
+    <TextView
+        style="@style/DefaultTextPetit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:text="@string/ajouter_amis" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+        <EditText
+              android:id="@+id/get_amiID"
+              android:layout_width="match_parent"
+              android:layout_height="60dp"
+              style="@style/DefaultHint"
+              android:gravity="center"
+              android:layout_weight="40"
+              android:inputType="text"
+              android:hint="@string/get_amiID"/>
+        
+        <Button
+            android:id="@+id/ajouter_amis"
+            style="@style/DefaultTextPetit"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_weight="60"
+            android:background="@drawable/default_bouton"
+            android:gravity="center"
+            android:text="@string/ajouter" />
+
+    </LinearLayout>
+    
+        <Button 
+                android:id="@+id/go_jeu"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/default_bouton"
+                style="@style/DefaultText"
+                android:text="@string/go_jeu"/>
+
+    
+</LinearLayout>

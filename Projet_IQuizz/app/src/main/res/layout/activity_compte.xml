@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,127 +8,185 @@
     android:background="@color/noir"
     tools:context=".controller.Compte">
     
-    <TableRow>
-        <TextView
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  style="@style/DefaultText"
-                  android:gravity="center"
-                  android:text="@string/userID"/>
-
-        <EditText
-                  android:id="@+id/userID"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  style="@style/DefaultHint"
-                  android:gravity="center"
-                  android:inputType="text"/>
-    </TableRow>
-    
-    <TableRow>
-        <TextView
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  style="@style/DefaultText"
-                  android:gravity="center"
-                  android:text="@string/userAge"/>
-
-        <EditText
-                  android:id="@+id/userAge"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  style="@style/DefaultHint"
-                  android:gravity="center"
-                  android:inputType="text"/>
-    </TableRow>
-
-    
-    <View 
-        android:layout_height="5dp" 
+    <TableLayout
         android:layout_width="match_parent"
-        android:background="#FF909090"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"/> 
+        android:layout_height="match_parent"
+        android:layout_weight="45"
+        android:background="@color/noir">
+        
+        <TableRow>
+            <TextView
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/DefaultText"
+                      android:gravity="center"
+                      android:text="@string/userID"/>
 
+            <TextView
+                      android:id="@+id/userID"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/DefaultHint"
+                      android:gravity="center"
+                      android:inputType="text"
+                      android:hint=""/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/DefaultTextPetit"
+                      android:gravity="center"
+                      android:text="@string/ancienPassword"/>
+
+            <EditText
+                      android:id="@+id/get_ancienPassword"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/DefaultHint"
+                      android:gravity="center"
+                      android:inputType="textPassword"
+                      android:hint=""/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/DefaultTextPetit"
+                      android:gravity="center"
+                      android:text="@string/nouveauPassword"/>
+
+            <EditText
+                      android:id="@+id/get_nouveauPassword"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/DefaultHint"
+                      android:gravity="center"
+                      android:inputType="textPassword"
+                      android:hint=""/>
+        </TableRow>
+
+        <View 
+            android:layout_height="5dp" 
+            android:layout_width="match_parent"
+            android:background="#FF909090"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"/> 
+
+        <TableRow>
+            <TextView
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/DefaultText"
+                      android:gravity="center"
+                      android:text="@string/userAge"/>
+
+            <EditText
+                      android:id="@+id/get_userAge"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/DefaultHint"
+                      android:gravity="center"
+                      android:inputType="number"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/DefaultText"
+                      android:gravity="center"
+                      android:text="@string/sexe"/>
+            
+            <RadioGroup
+                      android:id="@+id/sexe"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content">
     
-    <TableRow>
-        <TextView
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  style="@style/DefaultText"
-                  android:gravity="center"
-                  android:text="@string/sexe"/>
-        <RadioGroup
-                  android:id="@+id/sexe"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content">
->
-            <RadioButton
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  style="@style/DefaultText"
-                  android:gravity="center"
-                  android:text="@string/sexeM"/>
-            <RadioButton
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  style="@style/DefaultText"
-                  android:gravity="center"
-                  android:text="@string/sexeF"/>
-             <RadioButton
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  style="@style/DefaultText"
-                  android:gravity="center"
-                  android:text="@string/sexeA"/>
+                <RadioButton
+                      android:id="@+id/sexeM"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/DefaultText"
+                      android:gravity="center"
+                      android:text="@string/sexeM"/>
+                <RadioButton
+                      android:id="@+id/sexeF"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/DefaultText"
+                      android:gravity="center"
+                      android:text="@string/sexeF"/>
+                <RadioButton
+                      android:id="@+id/sexeA"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/DefaultText"
+                      android:gravity="center"
+                      android:text="@string/sexeA"/>
 
-        </RadioGroup>
-    </TableRow>
+            </RadioGroup>
+        </TableRow>
 
-    <View 
-        android:layout_height="5dp" 
+        <View 
+            android:layout_height="5dp" 
+            android:layout_width="match_parent"
+            android:background="#FF909090"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"/> 
+
+    </TableLayout>
+    
+    <LinearLayout
         android:layout_width="match_parent"
-        android:background="#FF909090"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"/> 
+        android:layout_height="match_parent"
+        android:layout_weight="55"
+        android:orientation="vertical"
+        android:background="@color/noir">
 
-    <Button 
-            android:id="@+id/sauver_modifs"
-            android:layout_width="250dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/default_bouton"
-            style="@style/DefaultText"
-            android:text="@string/sauver_modifs"/>
-
-    <Button 
-            android:id="@+id/gerer_amis"
-            android:layout_width="250dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/default_bouton"
-            style="@style/DefaultText"
-            android:text="@string/gerer_amis"/>
         <Button 
-            android:id="@+id/go_stats"
-            android:layout_width="250dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/default_bouton"
-            style="@style/DefaultText"
-            android:text="@string/go_stats"/>
-    <Button 
-            android:id="@+id/go_jeu"
-            android:layout_width="250dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/default_bouton"
-            style="@style/DefaultText"
-            android:text="@string/go_jeu"/>
+                android:id="@+id/sauver_modifs"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/default_bouton"
+                style="@style/DefaultText"
+                android:text="@string/sauver_modifs"/>
 
+        <Button 
+                android:id="@+id/gerer_amis"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/default_bouton"
+                style="@style/DefaultText"
+                android:text="@string/gerer_amis"/>
+            <Button 
+                android:id="@+id/go_stats"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/default_bouton"
+                style="@style/DefaultText"
+                android:text="@string/go_stats"/>
+        <Button 
+                android:id="@+id/go_jeu"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/default_bouton"
+                style="@style/DefaultText"
+                android:text="@string/go_jeu"/>
 
-</TableLayout>
+    </LinearLayout>
+</LinearLayout>

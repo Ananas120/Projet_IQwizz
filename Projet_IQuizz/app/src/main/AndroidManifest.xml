@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.StatsActivity"/>
+        <activity android:name=".controller.TransitionActivity"></activity>
+        <activity android:name=".controller.ConnexionActivity" />
+        <activity android:name=".controller.AmisActivity" />
+        <activity android:name=".controller.StatsActivity" />
         <activity android:name=".controller.FinQuizz" />
         <activity android:name=".controller.Reprendre" />
         <activity android:name=".controller.Compte" />

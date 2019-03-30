@@ -2,6 +2,7 @@ package com.example.projetcoo.projet_iquizz.controller;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.*;
 import android.view.View;
 import android.view.View.*;
 import android.widget.*;
@@ -10,18 +11,16 @@ import android.content.Intent;
 import java.util.ArrayList;
 
 import com.example.projetcoo.projet_iquizz.R;
-
-import com.example.projetcoo.projet_iquizz.modele.Defi;
-import com.example.projetcoo.projet_iquizz.modele.Question;
-import com.example.projetcoo.projet_iquizz.modele.Utilisateur;
+import com.example.projetcoo.projet_iquizz.modele.*;
 
 public class FinQuizz extends AppCompatActivity {
 
-    private TableLayout tableLayout;
     private ImageView param;
     private TextView texte_score;
+    private TableLayout tableLayout;
     
     private Defi defi;
+    private ArrayList<Utilisateur> joueurs; 
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +28,13 @@ public class FinQuizz extends AppCompatActivity {
         setContentView(R.layout.activity_fin_quizz);
 
         param = (ImageView) findViewById(R.id.parametres);
+        texte_score = (TextView) findViewById(R.id.score_quizz);
+        tableLayout = (TableLayout) findViewById(R.id.tableau_questions);
+        
+        defi = BDD.getInstance().getData().getDefiEnCours();
+        joueurs = BDD.getInstance().getData().getJoueursDefiConnectes();
+        
+        defi.fin(joueurs);
         
         param.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
@@ -37,17 +43,12 @@ public class FinQuizz extends AppCompatActivity {
             }
         });
         
-        texte_score = (TextView) findViewById(R.id.score_quizz);
-        tableLayout = (TableLayout) findViewById(R.id.tableau_questions);
-        
-        defi = getDefi();
-        
-        afficheQuestions();
-        
+        for (int i = 0; i < joueurs.size(); i++) {
+            afficheResultat(joueurs.get(i));
+        }
     }
     
-    private void afficheQuestions() {
-        int score = 0;
+    private void afficheResultat(Utilisateur joueur) {
         ArrayList<Question> questions = defi.getQuestions();
         
         TableRow ligneNum = null;
@@ -55,8 +56,13 @@ public class FinQuizz extends AppCompatActivity {
         
         int hauteur = (int) getResources().getDimension(R.dimen.imageView_height);
         int largeur = (int) getResources().getDimension(R.dimen.imageView_width);
+        
+        TextView resultat = getTexteResultat(joueur);
+        
+        tableLayout.addView(resultat);
+        
         for(int i = 0; i < questions.size(); i++) {
-            if (i%4 == 0) {
+            if (i%5 == 0) {
                 if (ligneNum != null) {
                     tableLayout.addView(ligneNum);
                     tableLayout.addView(ligneImg);
@@ -67,58 +73,67 @@ public class FinQuizz extends AppCompatActivity {
                 ligneImg = new TableRow(this);
                 ligneNum.setLayoutParams(p);
                 ligneImg.setLayoutParams(p);
-                
             }
-            TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
-                    TableRow.LayoutParams.WRAP_CONTENT);
+            TextView numero = getTexteNumero(i+1);
             
-            TextView numero = new TextView(this);
-            numero.setText("Qst n°"+(i+1));
-            numero.setLayoutParams(params);
-            numero.setTextAppearance(this, R.style.DefaultTextMini);
-
+            int valeur = questions.get(i).getChoix(defi.getChoix(joueur, i)).getValeur();
             
-            TableRow.LayoutParams params2 = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-                    TableRow.LayoutParams.WRAP_CONTENT);
-            params2.height = hauteur;
-            params2.width = largeur;
-            
-            ImageView image = new ImageView(this);
-            image.setLayoutParams(params2);
-            
-            if (defi.isCorrectChoix(i)) {
-                score += 1;
-                image.setImageResource(R.drawable.bon_choix);
-            } else {
-                image.setImageResource(R.drawable.mauvais_choix);
-            }
-            
-            image.setOnClickListener(new OnClickListener() {
-                public void onClick(View v) {
-                    Intent paramActivity = new Intent(FinQuizz.this, QuestionActivity.class);
-                    startActivity(paramActivity);
-                }
-            });
+            ImageView image = getImageReponse(hauteur, largeur, valeur);
             
             ligneNum.addView(numero);
             ligneImg.addView(image);
         }
         tableLayout.addView(ligneNum);
         tableLayout.addView(ligneImg);
-
-        String s = "Fin du Défi " + defi.getNom();
-        s += "\nScore : " + score + "/" + defi.getNbQuestions();
+        
+        String s = getResources().getString(R.string.fin_defi, defi.getNom());
         texte_score.setText(s);
     }
     
-    private Defi getDefi() {
-        ArrayList<Question> qst = new ArrayList<Question>();
+    private TextView getTexteResultat(Utilisateur joueur) {
+        String resultat = getResources().getString(R.string.resultat_joueur, joueur.getNom(), defi.getScore(joueur), defi.getNbQuestions());
         
-        for (int i = 0; i < 40; i++) {
-            Question q = new Question("Question 1", null, i%3);
-            qst.add(q);
-        }
-        Defi d = new Defi("Test Complet", qst, new Utilisateur("Ananas"));
-        return d;
+        TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
+                    TableRow.LayoutParams.WRAP_CONTENT);
+            
+        TextView texte = new TextView(this);
+        texte.setText(resultat);
+        texte.setLayoutParams(params);
+        texte.setGravity(Gravity.CENTER);
+        texte.setTextAppearance(this, R.style.DefaultTextPetit);
+        return texte;
     }
+    private TextView getTexteNumero(int num) {
+        TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
+                    TableRow.LayoutParams.WRAP_CONTENT);
+            
+        TextView numero = new TextView(this);
+        numero.setText("Q n°"+num);
+        numero.setLayoutParams(params);
+        numero.setTextAppearance(this, R.style.DefaultTextMini);
+        return numero;
+    }
+    private ImageView getImageReponse(int hauteur, int largeur, int valeur) {
+        TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
+                    TableRow.LayoutParams.WRAP_CONTENT);
+        params.height = hauteur;
+        params.width = largeur;
+        
+        ImageView image = new ImageView(this);
+        image.setLayoutParams(params);
+            
+        if (valeur > 0) {
+            image.setImageResource(R.drawable.bon_choix);
+        } else {
+            image.setImageResource(R.drawable.mauvais_choix);
+        }
+            
+        image.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                Intent paramActivity = new Intent(FinQuizz.this, QuestionActivity.class);
+                startActivity(paramActivity);
+            }
+        });
+        return image;
+    }    
 }

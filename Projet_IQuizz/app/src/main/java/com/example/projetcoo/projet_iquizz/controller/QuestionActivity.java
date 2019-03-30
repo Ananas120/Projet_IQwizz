@@ -3,6 +3,7 @@ package com.example.projetcoo.projet_iquizz.controller;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.*;
 import android.view.View.*;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.*;
@@ -11,26 +12,28 @@ import android.content.Intent;
 import java.util.ArrayList;
 
 import com.example.projetcoo.projet_iquizz.R;
-import com.example.projetcoo.projet_iquizz.modele.BDD;
-import com.example.projetcoo.projet_iquizz.modele.Quizz;
-import com.example.projetcoo.projet_iquizz.modele.Question;
-import com.example.projetcoo.projet_iquizz.modele.Choix;
+import com.example.projetcoo.projet_iquizz.modele.*;
 
 
 public class QuestionActivity extends AppCompatActivity implements OnClickListener {
 
     private ImageView retour;
-    private ImageView param;
+    private Button quitter;
+    private ImageView suivant;
     private LinearLayout layoutQuestion;
     private LinearLayout layoutChoix;
-    private TextView avancement;
-    private TextView texteQuestion;
+    private TextView affiche_avancement;
+    private TextView affiche_nomJoueur;
+    private TextView affiche_texteQuestion;
     private ArrayList<Button> boutonsChoix;
     
     private ArrayList<Question> questions;
-    private int[] choixUtilisateur;
+    private Defi defi;
+    private ArrayList<Utilisateur> joueurs;
     private int numeroQuestion;
     private int nombreQuestions;
+    private int numeroJoueur;
+    private boolean validationFin = false;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,117 +41,158 @@ public class QuestionActivity extends AppCompatActivity implements OnClickListen
         setContentView(R.layout.activity_question);
         
         retour = (ImageView) findViewById(R.id.retour);
-        param = (ImageView) findViewById(R.id.parametres);
+        quitter = (Button) findViewById(R.id.quitter);
+        suivant = (ImageView) findViewById(R.id.suivant);
         
         layoutQuestion = (LinearLayout) findViewById(R.id.layout_question);
         layoutChoix = (LinearLayout) findViewById(R.id.layout_choix);
-        avancement = (TextView) findViewById(R.id.avancement);
-        texteQuestion = (TextView) findViewById(R.id.texte_question);
+        affiche_avancement = (TextView) findViewById(R.id.avancement);
+        affiche_nomJoueur = (TextView) findViewById(R.id.nom_joueur);
+        affiche_texteQuestion = (TextView) findViewById(R.id.texte_question);
         
         boutonsChoix = new ArrayList<Button>();
-        questions = BDD.getInstance(this).getQuestions(new Quizz("Speed quizz Logique", "Logique", 5)); //getQuestions();
         
+        defi = BDD.getInstance().getData().getDefiEnCours();
+        joueurs = BDD.getInstance().getData().getJoueursDefiConnectes();
+        questions = defi.getQuestions();
+                
+        numeroJoueur = 0;
         numeroQuestion = 0;
         nombreQuestions = questions.size();
-        choixUtilisateur = new int[nombreQuestions];
-        for(int i = 0; i < choixUtilisateur.length; i++) {
-            choixUtilisateur[i] = -1;
-        }
+
         afficheQuestion(0);
         
         retour.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
+                if (joueurs.size() > 1) { afficheErreur(-2, null); return; }
+                validationFin = false;
                 if (numeroQuestion > 0) {
-                    afficheQuestion(numeroQuestion-1);
+                    affiche(numeroQuestion-1);
                 }
             }
         });
-        param.setOnClickListener(new OnClickListener() {
+        quitter.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                Intent paramActivity = new Intent(QuestionActivity.this, Compte.class);
-                startActivity(paramActivity);
+                Intent quitter = new Intent(QuestionActivity.this, Game.class);
+                startActivity(quitter);
+            }
+        });
+        suivant.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                if (joueurs.size() > 1) { afficheErreur(-2, null); return; }
+                if (numeroQuestion < nombreQuestions) {
+                    affiche(numeroQuestion+1);
+                }
             }
         });
     }
     
-    public void afficheQuestion(int num) {
-        numeroQuestion = num;
+    public void affiche(int numQuestion) {
+        if (joueurs.size() == 1) {
+            afficheQuestion(numQuestion);
+        } else if (numeroJoueur == joueurs.size() -1) {
+            afficheJoueur(0);
+            afficheErreur(1, joueurs.get(numeroJoueur).getNom());
+            afficheQuestion(numQuestion);
+        } else {
+            afficheJoueur(numeroJoueur+1);
+            afficheErreur(1, joueurs.get(numeroJoueur).getNom());
+            afficheQuestion(numeroQuestion);
+        }
+    }
+    
+    private void afficheJoueur(int num) {
+        numeroJoueur = num;
+        affiche_nomJoueur.setText(getResources().getString(R.string.tour_joueur, joueurs.get(numeroJoueur).getNom()));
+    }
+    private void afficheQuestion(int num) {
         if (num >= nombreQuestions) {
+            num = nombreQuestions-1;
             finQuizz();
             return;
         }
         if (num < 0) {
             num = 0;
         }
-        avancement.setText((num+1) + "/" + nombreQuestions);
+        numeroQuestion = num;
+        
+        affiche_avancement.setText((num+1) + "/" + nombreQuestions);
+        
         Question qst = questions.get(num);
         
         if (boutonsChoix.size() != qst.getNbChoix()) {
             layoutChoix.removeAllViews();
             boutonsChoix.clear();
             for(int i = 0; i < qst.getNbChoix(); i++) {
-                LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
-                    LayoutParams.WRAP_CONTENT);
-                params.setMargins(0,5,0,5);
-                Button bouton = new Button(this);
-                bouton.setLayoutParams(params);
-                bouton.setBackgroundDrawable(getResources().getDrawable(R.drawable.default_bouton_choix));
-                bouton.setTextAppearance(this, R.style.DefaultText);
-                bouton.setTag(""+i);
-                bouton.setOnClickListener(this);
+                Button bouton = createBoutonChoix();
                 boutonsChoix.add(bouton);
                 layoutChoix.addView(boutonsChoix.get(i));
             }
         }
         
-        texteQuestion.setText(qst.getText());
+        int choixUtilisateur = defi.getChoix(joueurs.get(numeroJoueur), numeroQuestion);
+        
+        affiche_texteQuestion.setText(qst.getText());
         for (int i = 0; i < boutonsChoix.size(); i++) {
+            boutonsChoix.get(i).setTag("" + qst.getChoix(i).getNumero());
+            if (choixUtilisateur == qst.getChoix(i).getNumero()) {
+                boutonsChoix.get(i).setBackgroundDrawable(getResources().getDrawable(R.drawable.default_bouton_choix_c));
+            } else {
+                boutonsChoix.get(i).setBackgroundDrawable(getResources().getDrawable(R.drawable.default_bouton_choix));
+            }
             boutonsChoix.get(i).setText(qst.getChoix(i).getText());
         }
     }
     
+    private Button createBoutonChoix() {
+        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
+                                               LayoutParams.WRAP_CONTENT);
+        params.setMargins(0,5,0,5);
+        Button bouton = new Button(this);
+        bouton.setLayoutParams(params);
+        bouton.setTextAppearance(this, R.style.DefaultText);
+        bouton.setOnClickListener(this);
+        return bouton;
+    }
+    
     public void onClick(View v) {
-        choixUtilisateur[numeroQuestion] = Integer.parseInt((String) v.getTag());
-        System.out.println("Choix à la question n°"+numeroQuestion + " = " + choixUtilisateur[numeroQuestion]);
-        afficheQuestion(numeroQuestion+1);
+        int numeroChoix = Integer.parseInt((String) v.getTag());
+        defi.setChoix(joueurs.get(numeroJoueur), numeroQuestion, numeroChoix);
+        affiche(numeroQuestion+1);
     }
     
-    public void finQuizz() {
-        Intent finQuizzActivity = new Intent(QuestionActivity.this, FinQuizz.class);
-        //lancerQuizz.setText("Quizz n°"+vue.getCheckedItemPosition());
-        startActivity(finQuizzActivity);
+    private void finQuizz() {
+        if (validationFin) {
+            Intent finQuizzActivity = new Intent(QuestionActivity.this, FinQuizz.class);
+            startActivity(finQuizzActivity);
+        } else {
+            validationFin = true;
+            if (joueurs.size() > 1 || defi.isFini(joueurs.get(0))) {
+                afficheErreur(0, null);
+            } else {
+                afficheErreur(-1, null);
+            }
+        }
     }
     
-    private ArrayList<Question> getQuestions() {
-        ArrayList<Question> qst = new ArrayList<Question>();
-        ArrayList<Choix> choix1 = new ArrayList<Choix>();
-        choix1.add(new Choix("Choix 1"));
-        choix1.add(new Choix("Choix 2"));
-        choix1.add(new Choix("Choix 3"));
-        choix1.add(new Choix("Choix 4"));
-        choix1.add(new Choix("Choix 5"));
-        choix1.add(new Choix("Choix 6"));
+    private void afficheErreur(int code, String identifiant) {
+        String message = "";
+        if (code == 1) {
+            message = getResources().getString(R.string.Question_TRANSITION, identifiant);
+        } else if (code == 0) {
+            message = getResources().getString(R.string.Question_CODE_ERREUR_0);
+        } else if (code == -1) {
+            message = getResources().getString(R.string.Question_CODE_ERREUR_1);
+        } else if (code == -2) {
+            message = getResources().getString(R.string.Question_CODE_ERREUR_2);
+        }
+        LinearLayout toastLayout = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.toast_view, null);
+        TextView toastText = (TextView) toastLayout.findViewById(R.id.toast_text);
+        toastText.setText(message);
         
-        ArrayList<Choix> choix2 = new ArrayList<Choix>();
-        choix2.add(new Choix("Choix 1"));
-        choix2.add(new Choix("Choix 2"));
-        choix2.add(new Choix("Choix 3"));
-        choix2.add(new Choix("Choix 4"));
-        choix2.add(new Choix("Choix 5"));
-        choix2.add(new Choix("Choix 6"));
-        choix2.add(new Choix("Choix 7"));
-        choix2.add(new Choix("Choix 8"));
-        
-        ArrayList<Choix> choix3 = new ArrayList<Choix>();
-        choix3.add(new Choix("Choix 1"));
-        choix3.add(new Choix("Choix 2"));
-        choix3.add(new Choix("Choix 3"));
-        choix3.add(new Choix("Choix 4"));
-        
-        qst.add(new Question("Question 1", choix1));
-        qst.add(new Question("Question 2", choix2));
-        qst.add(new Question("Question 3", choix3));
-        
-        return qst;
+        Toast toast = new Toast(this);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(toastLayout);
+        toast.show();
     }
 }

@@ -1,10 +1,14 @@
 package com.example.projetcoo.projet_iquizz.modele;
 
+import android.database.sqlite.SQLiteDatabase;
+import android.content.ContentValues;
+
 import java.util.ArrayList;
 
+import com.example.projetcoo.projet_iquizz.modele.BDDItem;
 import com.example.projetcoo.projet_iquizz.modele.Choix;
 
-public class Question {
+public class Question extends BDDItem {
     
     private int id;
     private String texte;
@@ -59,10 +63,30 @@ public class Question {
     public Choix getChoix(int i) { return this.choix.get(i); }
     public int getNbChoix() { return this.choix.size(); }
     public boolean isCorrectChoix(int num) {
-        if (num == correctChoix) {
-            return true;
-        } else {
-            return false;
+        for (int i = 0; i < choix.size(); i++) {
+            if (choix.get(i).getNumero() == num) {
+                if (choix.get(i).getValeur() != 0) { return true; } else { return false; }
+            }
+        }
+        return false;
+    }
+    
+    public void insert(SQLiteDatabase db) {
+        if (db == null) { return; }
+        ContentValues val = new ContentValues();
+        val.put(TABLE_QUESTIONS_QUESTIONID, this.id);
+        val.put(TABLE_QUESTIONS_INTITULE, this.texte);
+        val.put(TABLE_QUESTIONS_IMAGE, this.imageName);
+        val.put(TABLE_QUESTIONS_EXPLICATION, this.explication);
+        val.put(TABLE_QUESTIONS_CATEGORIE, this.categorie);
+        db.insert(TABLE_NAME_QUESTIONS, null, val);
+        
+        insertChoix(db);
+    }
+    private void insertChoix(SQLiteDatabase db) {
+        for (int i = 0; i < choix.size(); i++) {
+            choix.get(i).insert(db, this.id);
         }
     }
+    public void update(SQLiteDatabase db) {}
 }

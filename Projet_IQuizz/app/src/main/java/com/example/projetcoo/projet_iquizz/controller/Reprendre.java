@@ -1,50 +1,53 @@
 package com.example.projetcoo.projet_iquizz.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.*;
-import android.widget.*;
-import android.content.Intent;
-
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.projetcoo.projet_iquizz.R;
 import com.example.projetcoo.projet_iquizz.modele.BDD;
 import com.example.projetcoo.projet_iquizz.modele.Defi;
-import com.example.projetcoo.projet_iquizz.modele.Utilisateur;
-import com.example.projetcoo.projet_iquizz.vue.DefiAdapter;
+
+import java.util.ArrayList;
 
 public class Reprendre extends AppCompatActivity {
-    private ArrayList<Defi> liste;
-    private Button lancerQuizz;
-    private ListView vue;
+    
     private ImageView retour;
     private ImageView param;
+    private ListView vue;
+    private Button lancerQuizz;
+    private CheckBox jouerSimultane;
+
+    private ArrayList<Defi> listeDefis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_liste_quizz);
+        setContentView(R.layout.activity_reprendre);
         
-        liste = BDD.getInstance(this).
-                getDefis("qlanglois");
-        //getDefis();
+        listeDefis = BDD.getInstance().getDefisNonFinis();
         
-        vue = (ListView) findViewById(R.id.liste_quizz);
-
         retour = (ImageView) findViewById(R.id.retour);
         param = (ImageView) findViewById(R.id.parametres);
-        
+        vue = (ListView) findViewById(R.id.liste_quizz);
         lancerQuizz = (Button) findViewById(R.id.lancer_quizz);
+        jouerSimultane = (CheckBox) findViewById(R.id.defi_simultane);
         
-        lancerQuizz.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                Intent questionActivity = new Intent(Reprendre.this, QuestionActivity.class);
-                //lancerQuizz.setText("Quizz n°"+vue.getCheckedItemPosition());
-                startActivity(questionActivity);
-            }
-        });
+        ArrayAdapter adapteur = new ArrayAdapter(this, R.layout.ligne_item_single_choice, listeDefis);
+        
+        vue.setAdapter(adapteur);
+        
         retour.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent ancienneActivity = new Intent(Reprendre.this, Game.class);
@@ -57,46 +60,38 @@ public class Reprendre extends AppCompatActivity {
                 startActivity(paramActivity);
             }
         });
-        
-        DefiAdapter adapteur = new DefiAdapter(liste, this);
-        
-        vue.setAdapter(adapteur);
+        lancerQuizz.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                int pos = vue.getCheckedItemPosition();
+                if (pos == -1) { afficheErreur(-1); return ; }
+                
+                Defi d = listeDefis.get(pos);
+                
+                BDD.getInstance().getData().setDefiEnCours(d);
+                
+                if (jouerSimultane.isChecked() && BDD.getInstance().getData().getJoueursDefiNonConnectes().size() > 0) {
+                    Intent connexion = new Intent(Reprendre.this, ConnexionActivity.class);
+                    startActivity(connexion);
+                } else {
+                    Intent questionActivity = new Intent(Reprendre.this, QuestionActivity.class);
+                    startActivity(questionActivity);
+                }
+            }
+        });
     }
     
-    public ArrayList<Defi> getDefis() {
-        Utilisateur user1 = new Utilisateur("Ananas");
-        Utilisateur user2 = new Utilisateur("Bananas");
-        Utilisateur user3 = new Utilisateur("qlanglois");
-        Utilisateur user4 = new Utilisateur("aknockaert");
+    private void afficheErreur(int code) {
+        String message = "";
+        if (code == -1) {
+            message = getResources().getString(R.string.NO_SELECTION_ERROR);
+        } 
+        LinearLayout toastLayout = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.toast_view, null);
+        TextView toastText = (TextView) toastLayout.findViewById(R.id.toast_text);
+        toastText.setText(message);
         
-        
-        ArrayList<Utilisateur> liste1 = new ArrayList<Utilisateur>();
-        liste1.add(user1);
-        
-        ArrayList<Utilisateur> liste2 = new ArrayList<Utilisateur>();
-        liste2.add(user3);
-        liste2.add(user1);
-        liste2.add(user4);
-        
-        
-        ArrayList<Utilisateur> liste3 = new ArrayList<Utilisateur>();
-        liste3.add(user2);
-        liste3.add(user1);
-        
-        
-        ArrayList<Utilisateur> liste4 = new ArrayList<Utilisateur>();
-        liste4.add(user1);
-        liste4.add(user4);
-        liste4.add(user2);
-        liste4.add(user3);
-        
-        
-        ArrayList<Defi> liste = new ArrayList<Defi>();
-        liste.add(new Defi("Quizz complet", null, liste1));
-        liste.add(new Defi("Defi n°2", null, liste2));
-        liste.add(new Defi("Quizz n24", null, liste4));
-        liste.add(new Defi("Defi n°5", null, liste3));
-        
-        return liste;
+        Toast toast = new Toast(this);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(toastLayout);
+        toast.show();
     }
 }

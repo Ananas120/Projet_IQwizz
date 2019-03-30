@@ -47,7 +47,7 @@
     <ListView
               android:id="@+id/liste_quizz"
               android:layout_width="350dp"
-              android:layout_height="360dp"
+              android:layout_height="320dp"
               android:gravity="center"
               android:layout_gravity="center"
               android:paddingBottom="10dp"
@@ -65,5 +65,12 @@
         android:background="@drawable/default_bouton"
         android:gravity="center"
         android:text="@string/lancer_quizz" />
+    
+    <CheckBox
+        android:id="@+id/defi_simultane"
+        style="@style/DefaultText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/defi_simultane" />
     
 </LinearLayout>

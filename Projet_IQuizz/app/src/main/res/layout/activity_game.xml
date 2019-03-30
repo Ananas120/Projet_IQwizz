@@ -18,12 +18,14 @@
             android:layout_height="50dp"
             android:layout_weight="30"
             android:layout_gravity="center"
+            android:contentDescription="@string/description_fleche_inactif"
             android:src="@drawable/fleche_retour" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="30"
             android:layout_gravity="center"
+            android:contentDescription="@string/description_nom_appli"
             android:src="@drawable/nom_appli" />
         <ImageView
             android:id="@+id/parametres"
@@ -31,6 +33,7 @@
             android:layout_height="50dp"
             android:layout_weight="30"
             android:layout_gravity="center"
+            android:contentDescription="description_parametres"
             android:src="@drawable/engrenages" />
         
         
@@ -40,6 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         android:layout_gravity="center"
+        android:contentDescription="@string/description_logo"
         android:src="@drawable/logo" />
     
     <Button 
@@ -85,6 +89,5 @@
             android:background="@drawable/default_bouton"
             style="@style/DefaultTextPetit"
             android:text="@string/deconnexion"/>
-
 
 </LinearLayout>

@@ -46,8 +46,7 @@
               android:layout_height="wrap_content"
               style="@style/DefaultText"
               android:gravity="center"
-              android:paddingTop="0dp"
-              android:text="@string/score_quizz"/> 
+              android:paddingTop="0dp"/>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

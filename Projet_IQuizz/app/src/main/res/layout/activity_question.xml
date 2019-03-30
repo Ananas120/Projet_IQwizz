@@ -19,19 +19,23 @@
             android:layout_weight="30"
             android:layout_gravity="center"
             android:src="@drawable/fleche_retour" />
+        <Button 
+                android:id="@+id/quitter"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="40"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/default_bouton"
+                style="@style/DefaultTextMini"
+                android:text="@string/quitter"/>
         <ImageView
+            android:id="@+id/suivant"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="30"
             android:layout_gravity="center"
-            android:src="@drawable/nom_appli" />
-        <ImageView
-            android:id="@+id/parametres"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="30"
-            android:layout_gravity="center"
-            android:src="@drawable/engrenages" />
+            android:src="@drawable/fleche_suivant" />
         
         
     </LinearLayout>
@@ -52,6 +56,15 @@
             android:gravity="center"
             android:background="@drawable/default_texte_question"/>
 
+        <TextView
+            android:id="@+id/nom_joueur"
+            style="@style/DefaultText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/default_texte_question"/>
+
+        
         <TextView
             android:id="@+id/texte_question"
             style="@style/DefaultText"

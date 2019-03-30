@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS ChoixUtilisateur (
 CREATE TABLE IF NOT EXISTS Amis (
     Login STRING NOT NULL,
     AmiLogin STRING NOT NULL,
+    PRIMARY KEY (Login, AmiLogin),
     FOREIGN KEY (Login) REFERENCES Utilisateurs(Login),
     FOREIGN KEY (AmiLogin) REFERENCES Utilisateurs(Login)
 ); 

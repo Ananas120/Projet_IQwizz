@@ -12,6 +12,8 @@
     <string name="existCompte">Compte déjà créé ?</string>
     <string name="resterConnecte">Se souvenir de moi</string>
 
+    <string name="ancienPassword">Ancien mot de passe</string>
+    <string name="nouveauPassword">Nouveau mot de passe</string>
     <string name="sexe">Genre :</string>
     <string name="sexeM">Homme</string>
     <string name="sexeF">Femme</string>
@@ -21,6 +23,11 @@
     <string name="go_stats">Statistiques</string>
     <string name="go_jeu">Retour au jeu</string>
 
+    <string name="amis">Vos amis</string>
+    <string name="supprimer_amis">Supprimer les amis sélectionnés</string>
+    <string name="ajouter_amis">Entrez l\'identifiant de l\'ami à ajouter</string>
+    <string name="ajouter">Ajouter</string>
+    <string name="get_amiID">Identifiant</string>
 
     <string name="jouer">Jouer</string>
     <string name="defi">Défi</string>
@@ -32,11 +39,56 @@
     <string name="defi_simultane">Jouer tour à tour</string>
 
     <string name="choix_quizz">Sélectionnez le Quizz que vous voulez faire :</string>
+    
+    <string name="faire_plus_tard">Ce joueur fera le quizz plus tard</string>
+    <string name="connection_joueur">Connexion du joueur \n%1$s</string>
+    
     <string name="lancer_quizz">Lancer le Quizz</string>
-    <string name="score_quizz">Fin du quizz !</string>
+    
+    <string name="tour_joueur">Au tour du joueur %1$s</string>
+    <string name="quitter">Quitter</string>
+    
+    <string name="fin_defi">Fin du quizz %1$s !</string>
+    <string name="resultat_joueur">Résultats du joueur %1$s \nScore : %2$d/%3$d !</string>
 
     <string name="statistiques">Statistiques</string>
     <string name="choisirQuizz">Liste de vos Quizz terminés :</string>
     <string name="choisirAmis">Liste de vos Amis avec qui comparer :</string>
+
+    <string name="Connexion_CODE_ERREUR_0">Bienvenue %1$s !</string>
+    <string name="Connexion_CODE_ERREUR_1">Le nom d\'utilisateur n\'existe pas !</string>
+    <string name="Connexion_CODE_ERREUR_2">Vous n\'avez pas coché la case \"se souvenir de moi\"</string>
+    <string name="Connexion_CODE_ERREUR_3">Le mot de passe est incorrect !</string>
+    <string name="Connexion_CODE_ERREUR_4">Les 2 mots de passe ne correspondent pas !</string>
+    <string name="Connexion_CODE_ERREUR_5">Le mot de passe est trop court (minimum 5 caractères)</string>
+    <string name="Connexion_CODE_ERREUR_6">Le nom d\'utilisateur existe déjà !</string>
+    <string name="Connexion_CODE_ERREUR_7">Une erreur inconnue est survenie lors de la connexion</string>
+
+
+    <string name="description_fleche_inactif">Fleche de retour arrière, non cliquable</string>
+    <string name="description_fleche">Fleche de retour arrière, cliquable</string>
+    <string name="description_nom_appli">Nom de l\'application IQuizz</string>
+    <string name="description_parametres">Icone pour accéder aux parametres, représente un engrenage</string>
+    <string name="description_logo">Logo del\'application représentant un cerveau fait de circuits électriques.</string>
+
+    <string name="ajout_ami_CODE_ERREUR_0">Ami ajouté !</string>
+    <string name="ajout_ami_CODE_ERREUR_1">Vous êtes déjà amis</string>
+    <string name="ajout_ami_CODE_ERREUR_2">Ce nom d\'utilisateur n\'existe pas</string>
+
+    <string name="Game_CODE_ERREUR_1">Vous n\'avez aucun défi en cours.</string>
+
+    <string name="Reprendre_CODE_ERREUR_1">Vous avez déjà un défi identique</string>
+
+    <string name="Ami_CODE_ERREUR_0">Ami ajouté avec succès, félicitation !</string>
+    <string name="Ami_CODE_ERREUR_1">Vous ne pouvez pas être votre propre ami, désolé !</string>
+    <string name="Ami_CODE_ERREUR_2">Vous êtes déjà amis</string>
+    <string name="Ami_CODE_ERREUR_3">L\'identifiant n\'existe pas</string>
+
+    <string name="Question_TRANSITION">C\'est au tour du joueur %1$s, passez-lui le téléphone !</string>
+    <string name="Question_CODE_ERREUR_0">Si vous êtes sûr de vos réponses, re-appuyez sur votre choix (ou la fleche suivant) pour terminer !</string>
+    <string name="Question_CODE_ERREUR_1">Vous n\avez pas répondu à toutes les questions, êtes-vous sûr de vouloir terminer ?</string>
+    <string name="Question_CODE_ERREUR_2">Cette option n\'est pas disponible en mode tour à tour</string>
+
+    <string name="NO_SELECTION_ERROR">Vous n\'avez rien sélectionné !</string>
 
 </resources>

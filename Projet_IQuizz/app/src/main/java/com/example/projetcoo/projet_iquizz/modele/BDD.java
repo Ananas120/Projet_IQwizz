@@ -18,13 +18,13 @@ import com.example.projetcoo.projet_iquizz.modele.*;
 public class BDD extends SQLiteOpenHelper {
     
     public static final class Sexe {
-        public static final int HOMME = 0;
-        public static final int FEMME = 1;
-        public static final int AUTRE = 2;
+        public static final int HOMME = 1;
+        public static final int FEMME = 2;
+        public static final int AUTRE = 3;
     }
         
     public static final String NAME = "Database.db";
-    public static final int VERSION = 0;
+    public static final int VERSION = 1;
     
     private static BDD bdd = null;
             
@@ -33,28 +33,25 @@ public class BDD extends SQLiteOpenHelper {
     private final String DESTROY_DATABASE_FILENAME = "requetes_destruction.txt";
     
     private Context contexte;
+    private DataHolder data;
     
+    public static void init(Context context) { bdd = new BDD(context); }
+    public static void init(Context context, String filename) { 
+        bdd = new BDD(context, filename); 
+    }
     public static BDD getInstance() { return bdd; }
-    public static BDD getInstance(Context context) {
-        if (bdd == null) {
-            bdd = new BDD(context); 
-        }
-        return bdd; 
-    }
-    public static BDD getInstance(Context context, String filename) {
-        if (bdd == null) {
-            bdd = new BDD(context, filename); 
-        }
-        return bdd; 
-    }
+    public static BDD getInstance(Context context) { return bdd; }
+    public static BDD getInstance(Context context, String filename) { return bdd; }
     
     private BDD(Context context) {
         super(context, "Database.db", null, 2);
         this.contexte = context;
+        this.data = DataHolder.getInstance();
     }
     private BDD(Context context, String filename) {
-        super(context, "Database.db", null, 2);
+        super(context, "Database.db", null, 1);
         this.contexte = context;
+        this.data = DataHolder.getInstance();
         this.remplisBDD(this.getWritableDatabase(), filename);
     }
     private void remplisBDD(SQLiteDatabase db, String filename) {
@@ -83,7 +80,8 @@ public class BDD extends SQLiteOpenHelper {
         execSQLFromFile(db, CREATE_DATABASE_FILENAME);
     }
     private void onDestroy(SQLiteDatabase db) {
-        execSQLFromFile(db, DESTROY_DATABASE_FILENAME);
+        System.out.println("Destruction de la BDD !");
+        //execSQLFromFile(db, DESTROY_DATABASE_FILENAME);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onDestroy(db);
@@ -94,7 +92,7 @@ public class BDD extends SQLiteOpenHelper {
         onCreate(db);
     }
     
-    public void execSQLFromFile(SQLiteDatabase db, String filename) {
+    private void execSQLFromFile(SQLiteDatabase db, String filename) {
         BufferedReader fichier;
         ArrayList<String> liste_commandes = null; 
         try {
@@ -119,7 +117,7 @@ public class BDD extends SQLiteOpenHelper {
         }
         execSQLCommandes(db, liste_commandes);
     }
-    public void execSQLCommandes(SQLiteDatabase db, ArrayList<String> commandes) {
+    private void execSQLCommandes(SQLiteDatabase db, ArrayList<String> commandes) {
         if (commandes != null) {
             for (int i = 0; i < commandes.size(); i++) {
                 try {
@@ -130,41 +128,131 @@ public class BDD extends SQLiteOpenHelper {
             }
         }
     }
-    public String buildRequestFileFromQuizzFile(String filename) {
+    private String buildRequestFileFromQuizzFile(String filename) {
         String newFilename = null;
         
         return newFilename;
     }
     
-    public ArrayList<Utilisateur> getAmis(String login) {
-        return this.getAmis(getReadableDatabase(), login;
+    public DataHolder getData() { return this.data; }
+
+    public boolean userExiste(String login) {
+        return userExiste(this.getReadableDatabase(), login);
     }
-    public ArrayList<Utilisateur> getAmis(Utilisateur user) {
-        return this.getAmis(getReadableDatabase(), user.getNom());
+    public int connecte(String login, String mdp, int souvenir) {
+        return this.connecte(getReadableDatabase(), login, mdp, souvenir);
+    }
+    public int createCompte(String login, String password, String confirmPassword, int age, int sexe, int autoConnect) {
+        if (!password.equals(confirmPassword)) {
+            return -4;
+        } else {
+            if (password.length() < 5) {
+                return -5;
+            }
+            return createCompte(getWritableDatabase(), login, password, age, sexe, autoConnect);
+        }
+    }
+    public Defi createDefi(Quizz quizz) {
+        SQLiteDatabase db = getWritableDatabase();
+        ArrayList<Question> questions = getQuestions(db, quizz.getCategorie());
+        questions = Random.sample(questions, quizz.getNbQuestions());
+        ArrayList<Utilisateur> joueurs = data.getJoueursDefi();
+        int identifiant = getNbDefis(db);
+        Defi d = new Defi(identifiant, quizz.getNom(), joueurs, questions);
+        d.insert(db);
+        data.addDefi(d);
+        return d;
     }
     public Utilisateur getUtilisateur(String login) {
         return this.getUtilisateur(getReadableDatabase(), login);
     }
-    public ArrayList<Quizz> getQuizz(SQLiteDatabase db) {
-        return this.getQuizz(getReadableDatabase());
+    public ArrayList<Utilisateur> getAmis() {
+        if (!data.hasAmis()) {
+            this.data.setAmis(this.getAmis(getReadableDatabase(), data.getJoueur().getNom()));
+        }
+        return this.data.getAmis();
+    }
+    public ArrayList<Utilisateur> getAmis(String login) {
+        if (!data.hasAmis()) {
+            this.data.setAmis(this.getAmis(getReadableDatabase(), login));
+        }
+        return this.data.getAmis();
+    }
+    public ArrayList<Utilisateur> getAmis(Utilisateur user) {
+        if (!data.hasAmis()) {
+            this.data.setAmis(this.getAmis(getReadableDatabase(), user.getNom()));
+        }
+        return this.data.getAmis();
+    }
+    public ArrayList<Quizz> getQuizz() {
+        if (!data.hasQuizz()) {
+            this.data.setQuizz(this.getQuizz(getReadableDatabase()));
+        }
+        return this.data.getQuizz();
     }
     public Quizz getQuizz(String nom) {
-        return this.getQuizz(getReadableDatabase(), nom);
+        if (!data.hasQuizz()) {
+            this.data.setQuizz(this.getQuizz(getReadableDatabase()));
+        }
+        return this.data.getQuizz(nom);
+
     }
     public Defi getDefi(int defiID) {
-        return getDefi(getReadableDatabase(), defiID);
+        if (!this.data.hasDefis()) {
+            this.data.setDefis(getDefis(getReadableDatabase(), data.getJoueur().getNom()));
+        }
+        return this.data.getDefi(defiID);
+    }
+    public ArrayList<Defi> getDefis() {
+        return getDefis(data.getJoueur().getNom());
     }
     public ArrayList<Defi> getDefis(Utilisateur user) {
-        return getDefis(getReadableDatabase(), user.getNom());
+        if (!this.data.hasDefis()) {
+            this.data.setDefis(this.getDefis(getReadableDatabase(), user.getNom()));
+        }
+        return this.data.getDefis();
     }
     public ArrayList<Defi> getDefis(String login) {
-        return getDefis(getReadableDatabase(), login);
+        if (!this.data.hasDefis()) {
+            this.data.setDefis(this.getDefis(getReadableDatabase(), login));
+        }
+        return this.data.getDefis();
+    }
+    public ArrayList<Defi> getDefisFinis() {
+        return getDefisFinis(data.getJoueur().getNom());
+    }
+    public ArrayList<Defi> getDefisFinis(String login) {
+        if (!this.data.hasDefis()) {
+            this.data.setDefis(this.getDefis(getReadableDatabase(), login));
+        }
+        return this.data.getDefisFinis();
+    }
+    public ArrayList<Defi> getDefisFinis(Utilisateur user) {
+        return getDefisFinis(user.getNom());
+    }
+    public ArrayList<Defi> getDefisNonFinis() {
+        return getDefisNonFinis(data.getJoueur().getNom());
+    }
+    public ArrayList<Defi> getDefisNonFinis(String login) {
+        if (!this.data.hasDefis()) {
+            this.data.setDefis(this.getDefis(getReadableDatabase(), login));
+        }
+        return this.data.getDefisNonFinis();
+    }
+    public ArrayList<Defi> getDefisNonFinis(Utilisateur user) {
+        return getDefisNonFinis(user.getNom());
+    }
+    public boolean hasDefiIdentique(String nomQuizz) {
+        if (!this.data.hasDefis()) {
+            this.data.setDefis(this.getDefis(getReadableDatabase(), data.getJoueur().getNom()));
+        }
+        return this.data.hasDefiIdentique(nomQuizz);
     }
     public Question getQuestion(int id) {
         return getQuestion(getReadableDatabase(), id);
     }
     public ArrayList<Question> getDefiQuestions(int defiID) {
-        return getDefiQuestions(getReadableDatabase(), defiID);
+        return this.getDefi(defiID).getQuestions();
     }
     public ArrayList<Question> getQuestions(Quizz quizz) {
         ArrayList<Question> questions = getQuestions(quizz.getCategorie());
@@ -176,28 +264,91 @@ public class BDD extends SQLiteOpenHelper {
     public ArrayList<Choix> getChoix(Question question) {
         return getChoix(getReadableDatabase(), question.getID());
     }
-
     
+    private boolean userExiste(SQLiteDatabase db, String login) {
+        Cursor c = db.rawQuery("SELECT * FROM Utilisateurs WHERE Login = ?", new String []{login});
+        if (c.getCount() == 1) {
+            c.close();
+            return true;
+        } else {
+            c.close();
+            return false;
+        }
+    }
+    private int connecte(SQLiteDatabase db, String login, String mdp, int souvenir) {
+        Utilisateur user = null;
+        Cursor c = db.rawQuery("SELECT * FROM Utilisateurs WHERE Login = ?", new String []{login});
+        String password = null;
+        if (c.getCount() == 0) {
+            c.close();
+            return -1;
+        } else if (c.getCount() == 1) {
+            c.moveToFirst();
+            int autoConnect = c.getInt(c.getColumnIndex("AutoConnect"));
+            password = c.getString(c.getColumnIndex("Password"));
+            if (autoConnect != 1) {
+                if (mdp == null || !mdp.equals(password)) {
+                    c.close();
+                    if (mdp == null || mdp.equals("")) {
+                        return -2;
+                    } else {
+                        return -3;
+                    }
+                }
+            } 
+            
+            String nom = c.getString(c.getColumnIndex("Login"));
+            int age = c.getInt(c.getColumnIndex("Age"));
+            int sexe = c.getInt(c.getColumnIndex("Sexe"));
+            user = new Utilisateur(nom, password, age, sexe, autoConnect);
+            if (autoConnect == 0 && souvenir == 1) { user.setAutoConnect(souvenir); }
+        }
+        c.close();
+        if (user == null) { return -4; }
+        if (this.data.hasJoueur()) {
+            this.data.addJoueurConnecte(user);
+        } else {
+            this.data.setJoueur(user);
+        }
+        return 0;
+    }
+    private int createCompte(SQLiteDatabase db, String login, String password, int age, int sexe, int autoConnect) {
+        Cursor c = db.rawQuery("SELECT * FROM "+BDDItem.TABLE_NAME_UTILISATEUR+" WHERE Login = ?", new String []{login});
+        if (c.getCount() == 1) {
+            c.close();
+            return -6;
+        }
+        Utilisateur user = new Utilisateur(login, password, age, sexe, autoConnect);
+        user.insert(db);
+        if (this.data.hasJoueur()) {
+            this.data.addJoueurConnecte(user);
+        } else {
+            this.data.setJoueur(user);
+        }
+        return 0;
+    }
     private Utilisateur getUtilisateur(SQLiteDatabase db, String login) {
         Utilisateur user = null;
         Cursor c = db.rawQuery("SELECT * FROM Utilisateurs WHERE Login = ?", new String []{login});
         c.moveToFirst();
         if (c.getCount() == 1) {
             String nom = c.getString(c.getColumnIndex("Login"));
+            String mdp = null; 
             int age = c.getInt(c.getColumnIndex("Age"));
             int sexe = c.getInt(c.getColumnIndex("Sexe"));
             int autoConnect = c.getInt(c.getColumnIndex("AutoConnect"));
-            user = new Utilisateur(nom, age, sexe, autoConnect);
+            user = new Utilisateur(nom, mdp, age, sexe, autoConnect);
         }
         c.close();
         return user;
     }
     private ArrayList<Utilisateur> getAmis(SQLiteDatabase db, String login) {
         ArrayList<Utilisateur> amis = new ArrayList<Utilisateur>();
-        Cursor c = db.rawQuery("SELECT AmiLogin FROM Amis WHERE Login = ?", new String []{login});
+        Cursor c = db.rawQuery("SELECT * FROM Amis WHERE Login = ?", new String []{login});
         c.moveToFirst();
         for (int i = 0; i < c.getCount(); i++) {
-            this.getUtilisateur(db, c.getString(c.getColumnIndex("AmiLogin")));
+            String nouveauNom = c.getString(c.getColumnIndex("AmiLogin"));
+            amis.add(this.getUtilisateur(db, nouveauNom));
             c.moveToNext();
         }
         c.close();
@@ -251,14 +402,13 @@ public class BDD extends SQLiteOpenHelper {
             String nomQuizz = c.getString(c.getColumnIndex("NomQuizz"));
             ArrayList<Utilisateur> joueurs = getDefiJoueurs(db, defiID);
             ArrayList<Question> questions = getDefiQuestions(db, defiID);
-            HashMap<Utilisateur, HashMap> infos = new HashMap<Utilisateur, HashMap>();
+            HashMap<String, HashMap> infos = new HashMap<String, HashMap>();
             for (int i = 0; i < joueurs.size(); i++) {
-                System.out.println("Joueur : " + joueurs.get(i) + " defi ID : " + defiID);
                 HashMap infosJoueur = getDefiInfos(db, defiID, joueurs.get(i));
                 int[] choix = getDefiChoix(db, defiID, joueurs.get(i), questions);
                 infosJoueur.put("choix", choix);
                 
-                infos.put(joueurs.get(i), infosJoueur);
+                infos.put(joueurs.get(i).getNom(), infosJoueur);
             }
             defi = new Defi(defiID, nomQuizz, joueurs, questions, infos);
         }
@@ -391,6 +541,19 @@ public class BDD extends SQLiteOpenHelper {
         }
         c.close();
         return choix;
+    }
+    
+    private int getNbDefis(SQLiteDatabase db) {
+        Cursor c = db.rawQuery("SELECT * FROM Defis;", null);
+        int nb = c.getCount();
+        c.close();
+        return nb;
+    }
+    private int getNbQuestions(SQLiteDatabase db) {
+        Cursor c = db.rawQuery("SELECT * FROM Questions;", null);
+        int nb = c.getCount();
+        c.close();
+        return nb;
     }
     
     public Statistique getStatistiques(Utilisateur user) {
