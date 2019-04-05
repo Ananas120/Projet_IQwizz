@@ -1,0 +1,61 @@
+
+
+Q|Les microtraces permettent de remonter à une personne.
+QE|Les microtracespermettent de remonter à un certain typed'objet, pas à une personne directement. 
+C|Faux|V
+C|Vrai|F
+
+Q|Quels sont les 3 types de transferts (de microtraces) : 
+C|Transfert primaire, secondaire, croisé|V
+C|Transfert primaire, secondaire, tertiaire|F
+C|Transfert primaire, secondaire, multiple|F
+C|Il n'existe que 2 types de transferts (direct et indirect)|F
+
+Q|Les microtraces sont des indices d'actions pertinents
+C|Vrai|V
+C|Faux|F
+
+Q|Les microtraces sont : 
+C|des traces comme les autres|F
+C|des traces microscopiques (quelques microns)|V
+C|des traces de qualité médiocre|F
+C|des traces extrêmement rares à trouver|F
+
+Q|Les microtraces :
+C|se dégradent avec le temps|F
+C|peuvent rester indéfiniment dans de bonnes conditions|V
+C|finira forcément par disparaitre au bout de quelques jours/mois|F
+
+Q|Les microtraces se récupèrent principalement avec
+C|des bandes collantes|V
+C|un aspirateur|F
+C|à la main|F
+C|avec des cotons-tige|F
+
+Q|Combien de fibres textiles existe-t-il ?
+QE|Les fibres naturelles et synthétiques. 
+C|1|F
+C|2|V
+C|3|F
+C|4|F
+C|quelques centaines|F
+C|une infinité|F
+
+Q|Le test du shading est généralement fait
+QE|Il sert à connaitre la capacité d'un vêtement à perdre des fibres, il faut donc avoir d'abordprélevé les fibres sinon on ne serapas faire la différence entre ce qui était (traces) et ce qu'il a perdu
+C|avant la récupération des fibres|F
+C|après la récupération des fibres|V
+C|jamais, il n'est plus utilisé de nos jours|F
+
+Q|Les traces de peintures automobiles permettent de 
+C|Connaitre la marque du véhicule|V
+C|Connaitre la marque du véhicule seulement avec des analyses très poussées|F
+C|Connaitre le véhicule exact d'où elles proviennent|F
+C|ne rien connaitre, elles ne servent à rien|F
+
+Q|Les peintures automobiles possèdent combien de couches ?
+C|1|F
+C|2|F
+C|3|F
+C|4|V
+

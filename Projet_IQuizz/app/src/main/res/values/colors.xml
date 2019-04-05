@@ -8,5 +8,6 @@
     <color name="violet">#8A2BE2</color>
     <color name="pourpre">#800080</color>
     <color name="bleuF">#03224C</color>
-    <color name="vert">#095228</color>
+    <color name="vert">#00A000</color>
+    <color name="rouge">#B22222</color>
 </resources>

@@ -3,6 +3,7 @@ package com.example.projetcoo.projet_iquizz.modele;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.example.projetcoo.projet_iquizz.modele.*;
 
@@ -18,7 +19,7 @@ public class DataHolder {
     private ArrayList<Quizz> quizz;
     private ArrayList<Defi> defis;
     private Defi defiEnCours;
-    private Statistique statistiquesJoueur;
+    private HashMap<String, Statistique> statistiques;
     
     private DataHolder() {
         this.joueur = null;
@@ -28,6 +29,7 @@ public class DataHolder {
         this.quizz = quizz;
         this.defis = null;
         this.defiEnCours = null;
+        this.statistiques = new HashMap<String, Statistique>();
     }
     
     public void setJoueur(Utilisateur joueur) { 
@@ -73,7 +75,6 @@ public class DataHolder {
         this.defiEnCours = defi; 
         this.joueursDefi = defi.getJoueurs(); 
     }
-    public void setStatistiques(Statistique stats) { this.statistiquesJoueur = stats; }
     
     public Utilisateur getJoueur() { return this.joueur; }
     public ArrayList<Utilisateur> getAmis() { return amis; }
@@ -99,7 +100,6 @@ public class DataHolder {
         }
         return null;
     }
-    public Statistique getStatistiques() { return statistiquesJoueur; }
     
     public boolean hasJoueur() { return this.joueur != null; }
     public boolean hasAmis() { return this.amis != null; }
@@ -107,7 +107,6 @@ public class DataHolder {
     public boolean hasQuizz() { return this.quizz != null; }
     public boolean hasDefis() { return this.defis != null; }
     public boolean hasDefiEnCours() { return this.defiEnCours != null; }
-    public boolean hasStatistiques() { return this.statistiquesJoueur != null; }
     
     public boolean hasDefiIdentique(String nomQuizz) {
         for (int i = 0; i < defis.size(); i++) {
@@ -159,11 +158,16 @@ public class DataHolder {
     }
     
     public void deconnecte() {
+        saveState(BDD.getInstance().getWritableDatabase());
         this.joueur = null;
         this.amis = null;
         this.joueursConnectes = null;
         this.joueursDefi = null;
         this.defis = null;
         this.defiEnCours = null;
+    }
+    public void saveState(SQLiteDatabase db) {
+        if (joueur != null) { this.joueur.update(db); }
+        if (defis != null) { for (Defi defi : defis) { defi.update(db); } }
     }
 }

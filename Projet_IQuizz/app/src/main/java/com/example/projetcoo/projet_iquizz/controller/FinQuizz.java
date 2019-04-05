@@ -8,13 +8,16 @@ import android.view.View.*;
 import android.widget.*;
 import android.content.Intent;
 
-import java.util.ArrayList;
+import java.util.*;
 
 import com.example.projetcoo.projet_iquizz.R;
 import com.example.projetcoo.projet_iquizz.modele.*;
 
-public class FinQuizz extends AppCompatActivity {
+public class FinQuizz extends AppCompatActivity implements OnClickListener {
 
+    public static final String JOUEUR = "joueur";
+    public static final String NUMERO = "numeroQuestion";
+    
     private ImageView param;
     private TextView texte_score;
     private TableLayout tableLayout;
@@ -34,7 +37,10 @@ public class FinQuizz extends AppCompatActivity {
         defi = BDD.getInstance().getData().getDefiEnCours();
         joueurs = BDD.getInstance().getData().getJoueursDefiConnectes();
         
-        defi.fin(joueurs);
+        Calendar cal = Calendar.getInstance();
+        String date = cal.get(Calendar.DAY_OF_MONTH) + "-" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.YEAR);
+        
+        defi.fin(joueurs, date);
         
         param.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
@@ -79,6 +85,7 @@ public class FinQuizz extends AppCompatActivity {
             int valeur = questions.get(i).getChoix(defi.getChoix(joueur, i)).getValeur();
             
             ImageView image = getImageReponse(hauteur, largeur, valeur);
+            image.setTag(joueur.getNom() + "," + i);
             
             ligneNum.addView(numero);
             ligneImg.addView(image);
@@ -128,12 +135,18 @@ public class FinQuizz extends AppCompatActivity {
             image.setImageResource(R.drawable.mauvais_choix);
         }
             
-        image.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                Intent paramActivity = new Intent(FinQuizz.this, QuestionActivity.class);
-                startActivity(paramActivity);
-            }
-        });
+        image.setOnClickListener(this);
+        
         return image;
-    }    
+    }
+    
+    public void onClick(View v) {
+        String tag = (String) v.getTag();
+        String [] infos = tag.split(",");
+        
+        Intent correction = new Intent(FinQuizz.this, CorrectionQuestionActivity.class);
+        correction.putExtra(JOUEUR, infos[0]);
+        correction.putExtra(NUMERO, Integer.parseInt(infos[1]));
+        startActivity(correction);
+    }
 }

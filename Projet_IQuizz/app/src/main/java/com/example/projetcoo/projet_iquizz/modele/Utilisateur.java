@@ -16,6 +16,7 @@ public class Utilisateur extends BDDItem {
     private int sexe;
     private int autoConnect;
     private ArrayList<Utilisateur> amis;
+    private Statistique stats;
     
     public Utilisateur(String nom) {
         this.nom = nom;
@@ -51,6 +52,9 @@ public class Utilisateur extends BDDItem {
             this.amis = BDD.getInstance().getAmis(this); 
         }
         return this.amis;
+    }
+    public Statistique getStats() {
+        return BDD.getInstance().getStatistiques(this);
     }
     
     public void setNom(String nom) { this.nom = nom; modifie = true; }
@@ -151,5 +155,8 @@ public class Utilisateur extends BDDItem {
         String[] whereArgs = {this.nom};
         
         db.update(TABLE_NAME_UTILISATEUR, val, whereClause, whereArgs);
+    }
+    public ArrayList<String> getCommandes(boolean withSousCommandes) { 
+        return new ArrayList<String>();
     }
 }

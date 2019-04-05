@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        BDD.init(this, "requetes_generees.txt");
+        BDD.init(this, "all");
         
         userID = (EditText)findViewById(R.id.get_userID);
         password = (EditText)findViewById(R.id.get_password);
@@ -63,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(newCompteActivity);
             }
         });        
+    }
+    
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        BDD.getInstance().saveState();
     }
     
     private void afficheErreur(int code, String identifiant) {

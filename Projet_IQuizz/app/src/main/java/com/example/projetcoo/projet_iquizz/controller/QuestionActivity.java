@@ -25,7 +25,7 @@ public class QuestionActivity extends AppCompatActivity implements OnClickListen
     private TextView affiche_avancement;
     private TextView affiche_nomJoueur;
     private TextView affiche_texteQuestion;
-    private ArrayList<Button> boutonsChoix;
+    private ArrayList<TextView> boutonsChoix;
     
     private ArrayList<Question> questions;
     private Defi defi;
@@ -50,7 +50,7 @@ public class QuestionActivity extends AppCompatActivity implements OnClickListen
         affiche_nomJoueur = (TextView) findViewById(R.id.nom_joueur);
         affiche_texteQuestion = (TextView) findViewById(R.id.texte_question);
         
-        boutonsChoix = new ArrayList<Button>();
+        boutonsChoix = new ArrayList<>();
         
         defi = BDD.getInstance().getData().getDefiEnCours();
         joueurs = BDD.getInstance().getData().getJoueursDefiConnectes();
@@ -60,7 +60,7 @@ public class QuestionActivity extends AppCompatActivity implements OnClickListen
         numeroQuestion = 0;
         nombreQuestions = questions.size();
 
-        afficheQuestion(0);
+        debuteQuizz();
         
         retour.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
@@ -73,6 +73,7 @@ public class QuestionActivity extends AppCompatActivity implements OnClickListen
         });
         quitter.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
+                BDD.getInstance().saveState();
                 Intent quitter = new Intent(QuestionActivity.this, Game.class);
                 startActivity(quitter);
             }
@@ -86,7 +87,19 @@ public class QuestionActivity extends AppCompatActivity implements OnClickListen
             }
         });
     }
-    
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        BDD.getInstance().saveState();
+    }
+    public void debuteQuizz() {
+        if (joueurs.size() > 1) {
+            afficheJoueur(0);
+            afficheErreur(1, joueurs.get(0).getNom());
+        }
+        afficheQuestion(0);
+    }
     public void affiche(int numQuestion) {
         if (joueurs.size() == 1) {
             afficheQuestion(numQuestion);
@@ -109,7 +122,6 @@ public class QuestionActivity extends AppCompatActivity implements OnClickListen
         if (num >= nombreQuestions) {
             num = nombreQuestions-1;
             finQuizz();
-            return;
         }
         if (num < 0) {
             num = 0;
@@ -124,7 +136,7 @@ public class QuestionActivity extends AppCompatActivity implements OnClickListen
             layoutChoix.removeAllViews();
             boutonsChoix.clear();
             for(int i = 0; i < qst.getNbChoix(); i++) {
-                Button bouton = createBoutonChoix();
+                TextView bouton = createBoutonChoix();
                 boutonsChoix.add(bouton);
                 layoutChoix.addView(boutonsChoix.get(i));
             }
@@ -144,13 +156,13 @@ public class QuestionActivity extends AppCompatActivity implements OnClickListen
         }
     }
     
-    private Button createBoutonChoix() {
+    private TextView createBoutonChoix() {
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
                                                LayoutParams.WRAP_CONTENT);
         params.setMargins(0,5,0,5);
-        Button bouton = new Button(this);
+        TextView bouton = new TextView(this);
         bouton.setLayoutParams(params);
-        bouton.setTextAppearance(this, R.style.DefaultText);
+        bouton.setTextAppearance(this, R.style.DefaultTextPetit);
         bouton.setOnClickListener(this);
         return bouton;
     }
@@ -167,7 +179,7 @@ public class QuestionActivity extends AppCompatActivity implements OnClickListen
             startActivity(finQuizzActivity);
         } else {
             validationFin = true;
-            if (joueurs.size() > 1 || defi.isFini(joueurs.get(0))) {
+            if (joueurs.size() > 1 || defi.getNbQuestionsRestantes(joueurs.get(0)) == 0) {
                 afficheErreur(0, null);
             } else {
                 afficheErreur(-1, null);

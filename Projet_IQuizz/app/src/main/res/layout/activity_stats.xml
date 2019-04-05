@@ -59,7 +59,7 @@
     <ListView
                   android:id="@+id/liste_amis"
                   android:layout_width="350dp"
-                  android:layout_height="100dp"
+                  android:layout_height="75dp"
                   android:gravity="center"
                   android:layout_gravity="center"
                   android:paddingBottom="10dp"
@@ -73,11 +73,11 @@
               android:layout_height="wrap_content"
               style="@style/DefaultTextMini"
               android:gravity="center"
-              android:text="@string/choisirQuizz"/>
+              android:text="@string/choisirCategorie"/>
 
         
     <ListView
-                  android:id="@+id/liste_quizz"
+                  android:id="@+id/liste_categories"
                   android:layout_width="350dp"
                   android:layout_height="100dp"
                   android:gravity="center"
@@ -91,8 +91,8 @@
     
     <com.jjoe64.graphview.GraphView
                android:id="@+id/graph"
-               android:layout_width="350dp"
-               android:layout_height="200dp"
+               android:layout_width="match_parent"
+               android:layout_height="250dp"
                android:gravity="center"
                android:layout_gravity="center"
 />

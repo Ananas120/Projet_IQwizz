@@ -2,6 +2,8 @@ package com.example.projetcoo.projet_iquizz.modele;
 
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
 import com.example.projetcoo.projet_iquizz.modele.BDD;
 
 public abstract class BDDItem {
@@ -72,5 +74,6 @@ public abstract class BDDItem {
     public abstract void insert(SQLiteDatabase db);
     public void update() { this.update(BDD.getInstance().getReadableDatabase()); }
     public abstract void update(SQLiteDatabase db);
+    public abstract ArrayList<String> getCommandes(boolean withSousCommandes);
 
 }

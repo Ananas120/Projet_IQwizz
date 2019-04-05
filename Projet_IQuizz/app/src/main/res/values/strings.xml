@@ -39,20 +39,20 @@
     <string name="defi_simultane">Jouer tour à tour</string>
 
     <string name="choix_quizz">Sélectionnez le Quizz que vous voulez faire :</string>
-    
+
     <string name="faire_plus_tard">Ce joueur fera le quizz plus tard</string>
     <string name="connection_joueur">Connexion du joueur \n%1$s</string>
-    
+
     <string name="lancer_quizz">Lancer le Quizz</string>
-    
+
     <string name="tour_joueur">Au tour du joueur %1$s</string>
     <string name="quitter">Quitter</string>
-    
+
     <string name="fin_defi">Fin du quizz %1$s !</string>
     <string name="resultat_joueur">Résultats du joueur %1$s \nScore : %2$d/%3$d !</string>
 
     <string name="statistiques">Statistiques</string>
-    <string name="choisirQuizz">Liste de vos Quizz terminés :</string>
+    <string name="choisirCategorie">Categories</string>
     <string name="choisirAmis">Liste de vos Amis avec qui comparer :</string>
 
     <string name="Connexion_CODE_ERREUR_0">Bienvenue %1$s !</string>

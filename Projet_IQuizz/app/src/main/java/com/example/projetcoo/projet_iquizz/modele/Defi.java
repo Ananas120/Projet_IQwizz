@@ -82,6 +82,12 @@ public class Defi extends BDDItem {
     public boolean isJoueur(String login) {
         return this.infos.containsKey(login);
     }
+    public boolean isJoueur(ArrayList<Utilisateur> joueurs) {
+        for (int i = 0; i < joueurs.size(); i++) {
+            if (!isJoueur(joueurs.get(i).getNom())) { return false; }
+        }
+        return true;
+    }
     public boolean isFini(String userLogin) {
         if (getNbQuestionsRestantes(userLogin) == 0) {
             return true;
@@ -134,8 +140,7 @@ public class Defi extends BDDItem {
         }
     }
     public int[] getChoix(Utilisateur user) {
-        if (!this.infos.containsKey(user.getNom())) { return null; }
-        return (int []) this.infos.get(user.getNom()).get("choix");
+        return getChoix(user.getNom());
     }
     public int[] getChoix(String userLogin) {
         if (!this.infos.containsKey(userLogin)) { return null; }
@@ -143,10 +148,7 @@ public class Defi extends BDDItem {
     }
     
     public void setChoix(Utilisateur user, int numQuestion, int numChoix) {
-        if (!joueurs.contains(user)) { return; }
-        if (numQuestion > questions.size()) { return; }
-        modifie = true;
-        ( (int []) this.infos.get(user.getNom()).get("choix") )[numQuestion] = numChoix;
+        setChoix(user.getNom(), numQuestion, numChoix);
     }
     public void setChoix(String userLogin, int numQuestion, int numChoix) {
         if (!this.infos.containsKey(userLogin)) { return; }
@@ -155,15 +157,6 @@ public class Defi extends BDDItem {
         ( (int []) this.infos.get(userLogin).get("choix") )[numQuestion] = numChoix;
     }
     
-    public boolean isCorrectChoix(int numQuestion) {
-        for (int i = 0; i < this.joueurs.size(); i++) {
-            int choix = this.getChoix(this.joueurs.get(i), numQuestion);
-            if (!questions.get(numQuestion).isCorrectChoix(choix)) {
-                return false;
-            }
-        }
-        return true;
-    }
     public boolean isCorrectChoix(Utilisateur user, int numQuestion) {
         int choix = this.getChoix(user, numQuestion);
         if (questions.get(numQuestion).isCorrectChoix(choix)) {
@@ -174,8 +167,7 @@ public class Defi extends BDDItem {
     }
     
     public int getScore(Utilisateur user) {
-        if (!this.joueurs.contains(user)) { return -1; }
-        return (int) this.infos.get(user.getNom()).get("score");
+        return getScore(user.getNom());
     }
     public int getScore(String userLogin) {
         if (!this.infos.containsKey(userLogin)) { return -1; }
@@ -225,21 +217,32 @@ public class Defi extends BDDItem {
         return true;
     }
     
-    public void fin(ArrayList<Utilisateur> joueurs) {
+    public void fin(ArrayList<Utilisateur> joueurs, String date) {
+        modifie = true;
         for (int i = 0; i < joueurs.size(); i++) {
-            fin(joueurs.get(i));
+            int score = calculeScore(joueurs.get(i));
+            this.infos.get(joueurs.get(i).getNom()).put("score", score);
+            this.infos.get(joueurs.get(i).getNom()).put("date", date);
         }
+        update(BDD.getInstance().getWritableDatabase());
     }
-    public void fin(Utilisateur joueur) {
-        calculeScore(joueur);
+    public void fin(Utilisateur joueur, String date) {
+        modifie = true;
+        int score = calculeScore(joueur);
+        this.infos.get(joueur.getNom()).put("score", score);
+        this.infos.get(joueur.getNom()).put("date", date);
+        update(BDD.getInstance().getWritableDatabase());
     }
-    public void calculeScore(Utilisateur joueur) {
+    public int calculeScore(Utilisateur joueur) {
         int [] choix = getChoix(joueur);
+        if (choix == null) {
+            return 0;
+        }
         int score = 0;
         for (int c = 0; c < choix.length; c++) {
             score += questions.get(c).getChoix(choix[c]).getValeur();
         }
-        this.infos.get(joueur.getNom()).put("score", score);
+        return score;
     }
     
     public void insert(SQLiteDatabase db) {
@@ -295,6 +298,7 @@ public class Defi extends BDDItem {
             this.updateChoix(db, user);
             this.updateInfos(db, user);
         }
+        modifie = false;
     }
     private void updateChoix(SQLiteDatabase db, Utilisateur user) {
         int[] choix = getChoix(user);
@@ -322,5 +326,8 @@ public class Defi extends BDDItem {
         
         db.update(TABLE_NAME_DEFIINFOS, valInfos, whereClause, whereArgs);
 
+    }
+    public ArrayList<String> getCommandes(boolean withSousCommandes) { 
+        return new ArrayList<String>();
     }
 }

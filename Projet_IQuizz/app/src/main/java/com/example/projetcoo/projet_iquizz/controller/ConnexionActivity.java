@@ -51,8 +51,13 @@ public class ConnexionActivity extends AppCompatActivity {
                         String id = getResources().getString(R.string.connection_joueur, joueursAConnecter.get(0).getNom());
                         userID.setText(id);
                     } else {
-                        Intent gameActivity = new Intent(ConnexionActivity.this, QuestionActivity.class);
-                        startActivity(gameActivity);
+                        if (BDD.getInstance().getData().hasDefiEnCours()) {
+                            Intent questionActivity = new Intent(ConnexionActivity.this, QuestionActivity.class);
+                            startActivity(questionActivity);
+                        } else {
+                            Intent quizzActivity = new Intent(ConnexionActivity.this, ListeQuizz.class);
+                            startActivity(quizzActivity);
+                        }
                     }
                 }
             }
