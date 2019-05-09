@@ -71,11 +71,12 @@ public class Choix extends BDDItem {
                         texteChoix += infos[0];
                         if (infos[1].charAt(0) == 'V') { val = 1; } else { val = 0; }
                     }
+                    System.out.println("Valeur : " + val);
                 }
             }
         }
         if (imageChoix == null) { imageChoix = "NULL"; }
-        return new Choix(numero, val, texteChoix, imageChoix);
+        return new Choix(numero, val, texteChoix.replace("\"", "\"\""), imageChoix);
     }
     
     public ArrayList<String> getCommandes(boolean withSousCommandes) { 

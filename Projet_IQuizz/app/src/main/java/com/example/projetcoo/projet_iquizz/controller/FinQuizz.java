@@ -21,6 +21,7 @@ public class FinQuizz extends AppCompatActivity implements OnClickListener {
     private ImageView param;
     private TextView texte_score;
     private TableLayout tableLayout;
+    private Button go_jeu;
     
     private Defi defi;
     private ArrayList<Utilisateur> joueurs; 
@@ -33,6 +34,7 @@ public class FinQuizz extends AppCompatActivity implements OnClickListener {
         param = (ImageView) findViewById(R.id.parametres);
         texte_score = (TextView) findViewById(R.id.score_quizz);
         tableLayout = (TableLayout) findViewById(R.id.tableau_questions);
+        go_jeu = (Button) findViewById(R.id.go_jeu);
         
         defi = BDD.getInstance().getData().getDefiEnCours();
         joueurs = BDD.getInstance().getData().getJoueursDefiConnectes();
@@ -45,6 +47,12 @@ public class FinQuizz extends AppCompatActivity implements OnClickListener {
         param.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent paramActivity = new Intent(FinQuizz.this, Compte.class);
+                startActivity(paramActivity);
+            }
+        });
+        go_jeu.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                Intent paramActivity = new Intent(FinQuizz.this, Game.class);
                 startActivity(paramActivity);
             }
         });
@@ -82,7 +90,11 @@ public class FinQuizz extends AppCompatActivity implements OnClickListener {
             }
             TextView numero = getTexteNumero(i+1);
             
-            int valeur = questions.get(i).getChoix(defi.getChoix(joueur, i)).getValeur();
+            int choixUtilisateur = defi.getChoix(joueur, i);
+            int valeur = 0;
+            if (choixUtilisateur != -1) { 
+                choixUtilisateur = questions.get(i).getChoix(choixUtilisateur).getValeur();
+            }
             
             ImageView image = getImageReponse(hauteur, largeur, valeur);
             image.setTag(joueur.getNom() + "," + i);

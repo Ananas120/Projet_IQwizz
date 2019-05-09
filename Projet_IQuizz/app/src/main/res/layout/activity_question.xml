@@ -64,17 +64,27 @@
             android:gravity="center"
             android:background="@drawable/default_texte_question"/>
 
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/texte_question"
+                style="@style/DefaultText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/default_texte_question"/>
+        </ScrollView>
         
-        <TextView
-            android:id="@+id/texte_question"
-            style="@style/DefaultText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="@drawable/default_texte_question"/>
-
     </LinearLayout>
-
+    
+    <TextView
+        style="@style/DefaultTextRikiki"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/default_texte_question"
+        android:gravity="center"
+        android:text="   "/>
+    
     <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

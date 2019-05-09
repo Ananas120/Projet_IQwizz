@@ -40,7 +40,7 @@
     <TextView
         style="@style/DefaultText"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingTop="20dp"
         android:text="@string/choix_defi" />
@@ -48,7 +48,8 @@
     <ListView
               android:id="@+id/liste_joueurs"
               android:layout_width="350dp"
-              android:layout_height="340dp"
+              android:layout_height="match_parent"
+              android:layout_weight="30"
               android:gravity="center"
               android:layout_gravity="center"
               android:paddingBottom="10dp"
@@ -61,7 +62,8 @@
         android:id="@+id/lancer_defi"
         style="@style/DefaultTextPetit"
         android:layout_width="250dp"
-        android:layout_height="60dp"
+        android:layout_height="match_parent"
+        android:layout_weight="70"
         android:layout_gravity="center"
         android:background="@drawable/default_bouton"
         android:gravity="center"

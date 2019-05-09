@@ -240,6 +240,7 @@ public class Defi extends BDDItem {
         }
         int score = 0;
         for (int c = 0; c < choix.length; c++) {
+            if (choix[c] == -1) { continue; }
             score += questions.get(c).getChoix(choix[c]).getValeur();
         }
         return score;

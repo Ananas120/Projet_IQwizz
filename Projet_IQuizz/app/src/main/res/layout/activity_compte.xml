@@ -36,7 +36,7 @@
             <TextView
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      style="@style/DefaultTextPetit"
+                      style="@style/DefaultTextMini"
                       android:gravity="center"
                       android:text="@string/ancienPassword"/>
 
@@ -54,7 +54,7 @@
             <TextView
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      style="@style/DefaultTextPetit"
+                      style="@style/DefaultTextMini"
                       android:gravity="center"
                       android:text="@string/nouveauPassword"/>
 
@@ -109,21 +109,21 @@
                       android:id="@+id/sexeM"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      style="@style/DefaultText"
+                      style="@style/DefaultTextPetit"
                       android:gravity="center"
                       android:text="@string/sexeM"/>
                 <RadioButton
                       android:id="@+id/sexeF"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      style="@style/DefaultText"
+                      style="@style/DefaultTextPetit"
                       android:gravity="center"
                       android:text="@string/sexeF"/>
                 <RadioButton
                       android:id="@+id/sexeA"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      style="@style/DefaultText"
+                      style="@style/DefaultTextPetit"
                       android:gravity="center"
                       android:text="@string/sexeA"/>
 

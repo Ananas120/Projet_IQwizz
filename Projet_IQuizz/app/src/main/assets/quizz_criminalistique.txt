@@ -32,7 +32,7 @@ C|un aspirateur|F
 C|à la main|F
 C|avec des cotons-tige|F
 
-Q|Combien de fibres textiles existe-t-il ?
+Q|Combien de catégories de fibres textiles existe-t-il ?
 QE|Les fibres naturelles et synthétiques. 
 C|1|F
 C|2|V
@@ -59,3 +59,162 @@ C|2|F
 C|3|F
 C|4|V
 
+Q|Rapport entre criminalistique et sciences forensiques :
+C|les sciences forensiques font partie de la criminalistique|F
+C|Ce sont deux disciplines identiques|F
+C|La criminalistique fait partie des sciences forensiques|V
+C|Ces deux disciplines n'ont aucun rapport|F
+
+Q|Rapport entre criminologie et sciences forensiques :
+C|les sciences forensiques fait partie de la criminologie|F
+C|Ce sont deux disciplines identiques|F
+C|La criminologie fait partie des sciences forensiques|F
+C|Ces deux disciplines différentes|V
+
+Q|Laquelle de ces caractéristiques n'est pas une caractéristique de la trace ?
+QE|Une trace peut être immatérielle (trace numérique, témoignages, ...). 
+C|Possède une valeur d'existence|F
+C|Forcément matérielle|V
+C|Provient du passé|F
+C|Incomplète|F
+C|Fait partie d'un environnement|F
+C|Aucune des autres réponses n'est vraie|F
+
+Q|Laquelle de ces caractéristiques n'est pas une caractéristique de l'empreinte digitale ?
+C|De bonne qualité|F
+C|De source connue|F
+C|En 2D|F
+C|Retrouvée sur la scène de crime|V
+
+Q|Le postulat de Locard parle de : 
+QE|Le postulat de Locard parle du transfert de traces et de sa pertinence puisqu'il associe une trace à une activité (dont l'activité délictieuse). 
+C|Uniquement la pertinence d'une trace|F
+C|Uniquement le transfert de traces|F
+C|à la fois sur le transfert et sur la pertinence des traces|V
+
+Q|Quel est l'ordre correct : 
+C|Une trace devient un signe si elle est corrélée à une histoire. Ce signe devient un indice s'il apporte une signification|V
+C|Une trace devient un indice ou un signe suivant qu'elle apporte une signification ou non|F
+C|Une trace devient un indice si elle est corrélée à une histoire. Cet indice devient un signe s'il apporte une information|F
+C|Un indice devient une trace s'il est retrouvé|F
+
+Q|Les scientifiques chargés de l'investigation doivent connaitre les informations de contexte
+QE|En fonction du contexte, ils pourront s'intéresser particulièrement à certains endroits / types de trace / techniques. 
+C|Vrai|V
+C|Faux|F
+C|ça dépends'ils sont sujets au biais cognitif ou non|F
+
+Q|Le Bertillonage représente :
+C|Un ensemble de méthodes biométriques visant à l'individualisation et la classification de personnes sur base de mesures physiques. |V
+C|Un ensemble de méthodes médicales visant à l'individualisation et la classification de personnes.|F
+C|Un ensemble de méthodes physiques visant à l'individualisation et la classification d'objets sur base de mesures physiques. |F
+C|Un ensemble de méthodes biométriques visant à l'individualisation et la classification de personnes sur base de l'ADN|F
+
+Q|Quelle phrase est fausse : l'Anthropométrie criminelle ...
+C|se base sur le bertillonnage et la classification de personnes|F
+C|a été remplacée par l'analyse de traces digitales|F
+C|se base sur la fixité de l'ossature dès 20 ans|F
+C|a été inventée et implantée en France en premier lieu|V
+
+Q|La lophoscopie se base sur le fait que les dessins digitaux sont : 
+C|individuels|F
+C|immuables|F
+C|universels|F
+C|faciles à classer|F
+C|Toutes les réponses sont justes|V
+C|Aucune des réponses n'est juste, c'est la dactylographie qui se base sur ces critères|F
+
+Q|Les dessins digitaux contiennent combien de niveau d'informations ? 
+QE|Le dessin général, les points caractéristiques (minuties) et les bords/crêtes
+C|1|F
+C|2|F
+C|3|V
+C|4|F
+C|5|F
+
+Q|Lors d'investigations de scene de crime, le crime est :
+C|pris au sens large aussi bien un homicide qu'une catastrophe naturelle|V
+C|pris au sens strict, uniquement les actes punis par la loi|F
+C|ça dépend des circonstances, de la nationalité des victimes, ...|F
+C|pris au sens large (aussi bien homiciddes que vols) mais pas ce qui est de cause naturelle|F
+
+Q|Laquelle de ces étapes ne fait pas partie des 4 étapes fondamentales de l'investigation de scènes de crime ? 
+QE|L'assistance aux blessés est essentielle mais il s'agit d'une étape préliminaire qui sera généralement faite par les premiers arrivants sur les lieux (police, ambulances, ...) et non par un expert en investigation. 
+C|Sauvegarde et photographie du site|F
+C|Recherche et prélèvement des traces|F
+C|Reconstitution de l'acte sur base des indices|F
+C|Interpretation comme moyen depreuve|F
+C|Assistance aux blessés|V
+
+Q|Un incendie est : 
+C|Une forte combustion dont on a perdu le controle|V
+C|Une forte combustion dont on a le contrôle|F
+C|Une forte combustion se faisant à grande vitesse|F
+C|Une forte combustion se faisant à grande vitesse et produisant une ondedepression|F
+
+Q|Une explosion est : 
+C|Une forte combustion dont on a perdu le controle|F
+C|Une forte combustion dont on a le contrôle|F
+C|Une forte combustion se faisant à grande vitesse|F
+C|Une forte combustion se faisant à grande vitesse et produisant une ondedepression|V
+
+Q|Combien d'élément faut-il pour qu'il y ait une combustion ?
+QE|Un combustible, un comburant et une source de chaleur
+C|3|V
+C|4|F
+C|5|F
+C|2|F
+C|1|F
+
+Q|Lequel de ces éléments n'est pas nécessaire pour qu'il y ait combustion ?
+QE|La pyrolisation est le phénomène lors duquel le combustible va passer de l'état d'origine à l'état gazeux
+C|Pyrolisation|V
+C|Combustible|F
+C|Comburant|F
+C|Source de chaleur|F
+
+Q|La conduction est un transfert de chaleur ... 
+C|Au travers d'un solide|V
+C|Au travers d'un liquide|F
+C|Au travers d'un gaz|F
+C|Au travers d'un fluide (liquide ou gaz)|F
+C|Par ondes électromagnétiques|F
+
+Q|La convection est un transfert de chaleur ... 
+C|Au travers d'un solide|F
+C|Au travers d'un liquide|F
+C|Au travers d'un gaz|F
+C|Au travers d'un fluide (liquide ou gaz)|V
+C|Par ondes électromagnétiques|F
+
+Q|Le rayonnement est un transfert de chaleur ... 
+C|Au travers d'un solide|F
+C|Au travers d'un liquide|F
+C|Au travers d'un gaz|F
+C|Au travers d'un fluide (liquide ou gaz)|F
+C|Par ondes électromagnétiques|V
+
+Q|Laquelle de ces catégories n'est pas un auteur d'incendies :
+QE|La pyrolisation est le phénomène lors duquel le combustible va passer de l'état d'origine à l'état gazeux (ce n'est donc pas une catégorie de personnes). 
+C|Pyrolise|V
+C|Pyromane|F
+C|Incendiaire|F
+C|Enfants|F
+
+Q|Déterminer l'auteur d'un incendie est difficile d'autant plus s'il s'agit...
+QE|Un pyromane n'a souvent pas de lien avec les lieux et n'a pas d'intérêt particulier, il est donc plus difficile de faire le lien. 
+C|D'un pyromane|V
+C|D'un enfant|F
+C|D'un incendiaire|F
+
+Q|Le postulat de Locard dit : 
+C|Toutes les réponses sont correctes|V
+C|Nul ne peut agir avec l'intensité d'une action criminelle sans laisser des traces de son passage|F
+C|Le malfaiteur peut avoir laissé des marques de son activité|F
+C|Le malfaiteur peut avoir emporté les indices de son séjour (sur les lieux) ou de son geste|F
+
+Q|Quelles sont les étapes du processus ACEV ?
+C|Analyse, Comparaison, Evaluation, Vérification|V
+C|Arrestation, Comparaison, Emprisonnement, Vérification|F
+C|Arrestation, Comparaison, Evaluation, Verification|F
+C|Analyse, Comparaison, EValuation|F

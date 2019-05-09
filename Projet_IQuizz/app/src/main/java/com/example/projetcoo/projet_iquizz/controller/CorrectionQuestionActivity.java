@@ -103,11 +103,36 @@ public class CorrectionQuestionActivity extends AppCompatActivity {
         int choixUtilisateur = defi.getChoix(joueur, numeroQuestion);
         
         affiche_texteQuestion.setText(qst.getText());
-        affiche_choix.setText(qst.getChoix(choixUtilisateur).getText());
+        if (qst.getText().split("\n").length > 2) {
+            affiche_texteQuestion.setTextAppearance(this, R.style.DefaultTextMini);
+        } else {
+            affiche_texteQuestion.setTextAppearance(this, R.style.DefaultTextPetit);
+        }
+        
+        String texteChoix = "";
+        if (choixUtilisateur != -1) {
+            texteChoix = qst.getChoix(choixUtilisateur).getText();
+        } else {
+            texteChoix = "Vous n'avez pas sélectionné de choix !";
+        }
+        affiche_choix.setText(texteChoix);
+        if (texteChoix.contains("\n")) {
+            affiche_choix.setTextAppearance(this, R.style.DefaultTextMini);
+        } else {
+            affiche_choix.setTextAppearance(this, R.style.DefaultTextPetit);
+        }
+        
         affiche_choixCorrect.setText(qst.getChoixCorrecte().getText());
+        if (qst.getChoixCorrecte().getText().contains("\n")) {
+            affiche_choixCorrect.setTextAppearance(this, R.style.DefaultTextMini);
+        } else {
+            affiche_choixCorrect.setTextAppearance(this, R.style.DefaultTextPetit);
+        }
+        
+        
         affiche_explication.setText(qst.getExplication());
         
-        if (qst.isCorrectChoix(choixUtilisateur)) {
+        if (choixUtilisateur != -1 && qst.isCorrectChoix(choixUtilisateur)) {
            affiche_choix.setBackgroundDrawable(getResources().getDrawable(R.drawable.choix_v));
         } else {
             affiche_choix.setBackgroundDrawable(getResources().getDrawable(R.drawable.choix_f));

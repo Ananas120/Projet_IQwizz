@@ -41,7 +41,8 @@
     
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
+        android:layout_weight="12"
         android:layout_gravity="center"
         android:contentDescription="@string/description_logo"
         android:src="@drawable/logo" />
@@ -52,7 +53,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_weight="25"
+            android:layout_weight="22"
             android:background="@drawable/default_bouton"
             style="@style/DefaultText"
             android:text="@string/jouer"/>
@@ -63,7 +64,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_weight="25"
+            android:layout_weight="22"
             android:background="@drawable/default_bouton"
             style="@style/DefaultText"
             android:text="@string/defi"/>
@@ -74,7 +75,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_weight="25"
+            android:layout_weight="22"
             android:background="@drawable/default_bouton"
             style="@style/DefaultText"
             android:text="@string/reprendre"/>
@@ -85,7 +86,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_weight="25"
+            android:layout_weight="22"
             android:background="@drawable/default_bouton"
             style="@style/DefaultTextPetit"
             android:text="@string/deconnexion"/>

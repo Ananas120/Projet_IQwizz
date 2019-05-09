@@ -39,7 +39,8 @@
     <TextView
         style="@style/DefaultText"
         android:layout_width="match_parent"
-        android:layout_height="115dp"
+        android:layout_height="match_parent"
+        android:layout_weight="35"
         android:gravity="center"
         android:paddingTop="20dp"
         android:text="@string/choix_quizz" />
@@ -47,12 +48,13 @@
     <ListView
               android:id="@+id/liste_quizz"
               android:layout_width="350dp"
-              android:layout_height="360dp"
+              android:layout_height="match_parent"
+              android:layout_weight="20"
               android:gravity="center"
               android:layout_gravity="center"
               android:paddingBottom="10dp"
               android:divider="@android:color/transparent"
-              android:dividerHeight="7.5dp"
+              android:dividerHeight="8.5dp"
               android:choiceMode="singleChoice">
     </ListView>
 
@@ -60,7 +62,8 @@
         android:id="@+id/lancer_quizz"
         style="@style/DefaultTextPetit"
         android:layout_width="250dp"
-        android:layout_height="60dp"
+        android:layout_height="match_parent"
+        android:layout_weight="45"
         android:layout_gravity="center"
         android:background="@drawable/default_bouton"
         android:gravity="center"

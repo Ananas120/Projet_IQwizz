@@ -48,7 +48,7 @@ public class BDD extends SQLiteOpenHelper {
         this.data = DataHolder.getInstance();
     }
     private BDD(Context context, String filename) {
-        super(context, "Database.db", null, 3);
+        super(context, "Database.db", null, 2);
         this.contexte = context;
         this.data = DataHolder.getInstance();
         this.remplisBDD(this.getWritableDatabase(), filename);
@@ -128,6 +128,7 @@ public class BDD extends SQLiteOpenHelper {
                     db.execSQL(commandes.get(i));
                 } catch (SQLiteException e) {
                     System.err.println("La commande " + commandes.get(i) + " a échouée !");
+                    System.err.println(e.toString());
                 }
             }
         }
@@ -137,10 +138,10 @@ public class BDD extends SQLiteOpenHelper {
         
         ArrayList<Question> questions = new ArrayList<Question>();
         
-        BufferedReader fichier;
+        BufferedReader fichier = null;
         ArrayList<String> liste_texte_questions = null; 
         try {
-            fichier =new BufferedReader(new InputStreamReader(contexte.getAssets().open(filename)));
+            fichier =new BufferedReader(new InputStreamReader(contexte.getAssets().open(filename), "UTF-8"));
             
             liste_texte_questions = new ArrayList<String>();
             
@@ -157,9 +158,14 @@ public class BDD extends SQLiteOpenHelper {
                 }
             }
             liste_texte_questions.add(texte_question);
-            fichier.close();
         } catch (Exception e) {
             System.err.println(e.toString());
+        } finally {
+            if (fichier != null) {
+                try {
+                    fichier.close();
+                } catch (IOException e) { e.printStackTrace(); }
+            }
         }
         
         int nb = getNbQuestions(db);
@@ -549,7 +555,7 @@ public class BDD extends SQLiteOpenHelper {
     
     private ArrayList<Question> getDefiQuestions(SQLiteDatabase db, int defiID) {
         ArrayList<Question> questions = new ArrayList<Question>();
-        Cursor c = db.rawQuery("SELECT * FROM DefiQuestions WHERE DefiID = ?", new String[] {""+defiID});
+        Cursor c = db.rawQuery("SELECT * FROM DefiQuestions WHERE DefiID = ? ORDER BY Position", new String[] {""+defiID});
         
         c.moveToFirst();
         for (int i = 0; i < c.getCount(); i++) {

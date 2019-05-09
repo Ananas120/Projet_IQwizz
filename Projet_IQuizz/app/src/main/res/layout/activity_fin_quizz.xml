@@ -45,8 +45,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               style="@style/DefaultText"
-              android:gravity="center"
-              android:paddingTop="0dp"/>
+              android:gravity="center"/>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -57,5 +56,14 @@
 
             </TableLayout>
         </ScrollView>
+        <Button 
+                android:id="@+id/go_jeu"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/default_bouton"
+                style="@style/DefaultText"
+                android:text="@string/go_jeu"/>
     </LinearLayout>
 </LinearLayout>

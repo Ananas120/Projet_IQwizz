@@ -35,7 +35,7 @@
     <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              style="@style/DefaultHint"
+              style="@style/DefaultText"
               android:gravity="center"
               android:paddingTop="10dp"
               android:text="@string/password"/>
@@ -52,11 +52,11 @@
     <Button
         android:id="@+id/connexion"
         style="@style/DefaultText"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_gravity="center"
         android:background="@drawable/default_bouton"
-        android:paddingLeft="25dp"
         android:text="@string/connexion" />
     
     <TextView
@@ -71,7 +71,7 @@
              android:id="@+id/resterConnecte"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              style="@style/DefaultText"
+              style="@style/DefaultTextPetit"
               android:text="@string/resterConnecte"/>
 
 </LinearLayout>

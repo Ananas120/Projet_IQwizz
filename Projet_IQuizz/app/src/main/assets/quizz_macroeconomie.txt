@@ -1,0 +1,263 @@
+
+
+Q|Soit une propension à détenir des espèces (c = 0,2) et un coéfficient de réserve (theta = 0,1), Que vaut le multiplicateur monétaire ? 
+QE| 
+E^d = c * M^d
+D^d = (1 - c) * M^d
+R^d = theta * D^d = theta * (1-c) * M^d
+--> H = E^d + R^d
+--> H = c * M^d + theta * (1 - c) * M^d
+--> H = [c + theta * (1 - c)] * M^d
+--> H / [c + theta * (1-c)] = M^d
+M^m = 1 / [ c + theta * (1 - c)]
+M^m = 1 / [0,2 + 0,1 * 0,8] = 3,57
+C|3, 57|V
+C|0,28|F
+C|1,28|F
+C|0,14|F
+
+Q|Soit un multiplicateur monétaire (M^m = 3,57), si on augmente la base monétaire de 100, de combien augmente la demandede monnaie ?
+QE| difference de M^s = M^m * difference de H
+Si H augmente de 100 : 
+--> augmentation de M^s = 3,57 * 100 = 357
+C|357|V
+C|500|F
+C|1000|F
+C|100|F
+
+Q|Lorsque le coéfficient de réserve augmente ... 
+(laquelle de ces propositions est fausse ?)
+C|Le multiplicateur monétaire augmente|V
+C|La masse monétaire diminue|F
+C|Les banques doivent détenir plus d'argent de réserve|F
+C|Toutes les affirmations ci-dessus sont vraies|F
+
+Q| 
+Les titres proposés sont des obligations à 1 an ont une valeur faciale de 100€
+Quel est le prix des titres (P^b) lorsque :
+a) i = 5% 
+b) i = 10%
+
+QE|Le rendement d'un titre s'exprime : 
+i = (X + P^b) / P^b
+Ici, on a X (valeur faciale) et i (taux d'intérêt) on peut donc écrire :
+i = (X / p^b) - 1
+i + 1 = X / p^b
+P^b = X / (i + 1)
+P^b = 100 / (i + 1)
+a) P^b = 100 / 1,05 = 
+b) P^b = 100 / 1,10 = 
+
+C| 
+a) 95,24€
+b) 90,91€
+
+|V
+
+C| 
+a) 90,91€
+b) 95,24€
+|F
+
+C| 
+a) 105,26€
+b) 111,11€
+|F
+
+C| 
+a) 111,11€
+b) 105,26€
+|F
+
+Q|Supposons une économie où la demande de monnaie est représentée par la relation : 
+M^d = 20 000 * (0,35 - i). 
+Supposons qu'il n'existe que 2 actifs : la monnaie et les titres. 
+On peut donc écrire la contrainte liant le salaire (W), la demande de monnaie (M^d) et la demande de titres (B^d) : 
+W = M^d + P^b * B^d
+
+Sachant que W = 100 000€, et X (valeurfaciale des titres) = 100€,
+Combien de titres seront demandés si le taux d'intérêt i = 1% ? 
+
+QE| 
+P^b = X / (1 + i) = 99
+M^d = 20 000 * (0,35 - i) = 6 800
+100 000 = 6 800 + 99 * B^d 
+B^d = 93 200 / 99 = 941 titres
+
+C|1000 titres|F
+C|941 titres|V
+C|922 titres|F
+C|931 titres|F
+C|910 titres|F
+
+Q|Que provoque une augmentation du taux d'intérêt sur la demande de titres et la demande de monnaie ?
+C| 
+La demande de titres va monter. 
+La demande de monnaie va baisser. 
+|V
+C| 
+La demande de titres va baisser. 
+La demande de monnaie va monter. 
+|F
+C| 
+La demande de titres va monter. 
+La demande de monnaie va monter. 
+|F
+C| 
+La demande de titres va baisser. 
+La demande de monnaie va baisser. 
+|F
+
+Q|Supposons que, au taux d'intérêt actuel, l'offre de monnaie soit inférieure à la demande de monnaie. 
+Sachant celà, on peut dire que : 
+C|Le prix des titres va tendre à diminuer|V
+C|Le prix des titres va tendre à augmenter.|F
+C|L'offre de titres est égale à la demande de titres|F
+C|Le marché des biens est à l'équilibre|F
+
+Q|Si la Banque Centrale n'a pas de cible de taux d'intérêt à satisfaire, quelle évolution parmi les suivantes, entraine une hausse du taux d'intérêt ? 
+C|Un achat de titres par la Banque Centrale, dans le cadre d'une opération d'open market.|F
+C|Une hausse de l'offre de monnaie. |F
+C|Une hausse du revenu|V
+C|Une baisse du revenu|F
+
+Q|Quand la monnaie inclut les espèces et les dépôts à vue, le taux d'intérêt d'équilibre est tel que ... (quelle réponse est incorrecte ?)
+QE| 1 / [c + theta * (1-c)] = M^m (multiplicateur monétaire). 
+H * M^m = M^d --> H = M^d / M^m
+C|L'offre de Monnaie Banque Centrale est égale à la demande de monnaie multipliée par le multiplicateur monétaire|V
+C|La base monétaire H est égale à la demande de monnaie divisée par le multiplicateur monétaire|F
+C|L'offre et la demande de monnaie sont égales|F
+
+Q|Intéressons-nous à l'équilibre sur le marché des biens et services. 
+Supposons une demande globale suivant la formule : 
+Z = C(Y - T, i) + I(Y, i) + G
+Supposons également (pour simplifier) : T = 0
+Sachant que : 
+C = 0.8 * Y
+I = 0,1 * Y - 3000 * i
+Si i = 2% et G = 500, 
+
+Que vaut le niveau de production d'équilibre (Y = C + I + G) ? 
+
+QE| On sait que : 
+Z = C(Y - T, i) + I(Y, i) + G
+C = 0,8 * Y
+I = 0,1 * Y - 3000 * i
+G = 500
+--> Z = 0,8Y + 0,1Y - 3000i + 500
+--> Z = 0,9Y - 3000 * 0,2 + 500
+--> Z = 0,9Y + 440
+Pour qu'il y ait équilibre : Z = Y
+--> Y = 0,9Y + 440
+--> 0,1Y = 440
+--> Y = 4400
+
+C|Y = 4400|V
+C|Y = 2200|F
+C|Y = 440|F
+C|Y = 8800|F
+
+Q|Que provoque une augmentation de G sur la courbe IS ? 
+QE|Si les dépenses publiques augmentent, pour un même taux d'intérêt, la demande augmente et donc il faut déplacer la courbe vers la droite. 
+C|Un déplacement sur la courbe|F
+C|Un déplacement de la courbe vers la droite|V
+C|Un déplacement de la courbe vers la gauche|F
+
+Q|Intéressons-nous à l'équilibre sur le marché des biens et services. 
+Supposons une demande globale suivant la formule : 
+Z = C(Y - T, i) + I(Y, i) + G
+Supposons également (pour simplifier) : T = 0
+Sachant que : 
+C = 0.8 * Y
+I = 0,1 * Y - 3000 * i
+Si G = 500, 
+
+Que vaut la fonction de la courbe IS (en fonction de Y et i) ?
+
+QE|La courbe IS représente l'ensemble des points d'équilibre où Y = Z
+Z = C + I + G
+Z = 0,8Y + 0,1Y - 3000i + 500
+Pour qu'il y ait équilibre, il faut que Y (production) = Z (demande) :
+Y = 0,9Y - 3000i + 500
+0,1Y = - 3000i + 500
+Y = - 30 000i + 5 000 (courbe IS)
+
+C|Y = 30 000i + 5000|V
+C|Y = - 30 000i + 5000|F
+C|Y = - 3000i + 500|F
+C|Y = 3000i + 500|F
+
+Q|Supposons la courbe IS respectant l'équation suivante : 
+Y = - 30 000i + 5000
+Quel est le taux d'intérêt d'équilibre si Y = 4700 ?
+QE|Y = -30 000i + 5000
+4700 = -30 000i + 5000
+30 000i = 300
+i = 0,01 = 1%
+
+C|i = 1%|V
+C|i = 2%|F
+C|i = 3%|F
+C|i = 0,1%|F
+C|i = 0,2%|F
+
+Q|Considérons une économie fermée décrite par les équations suivantes : 
+C = c0 + c1 * (Y - T)
+I = b0 - b1 * i
+G = 200
+T = t0 + t1 * Y
+
+Avec : 
+c0, c1, b0, b1, t0, t1 > 0
+c1, t1 < 1
+
+Que vaut l'effet multiplicateur ? 
+
+QE|La condition d'équilibre sur le marché des biens est : 
+Y = C + I + G
+Y = c0 + c1 * (Y - t0 - t1 * Y) + b0 - b1 * i + 200
+
+Il faut donc isoler Y : 
+Y = c0 + c1*Y - c1*t0 - c1*t1*Y + b0 - b1*i + 200
+Y - c1*Y + c1*t1*Y = c0 + c1*t0 + b0 - b1*i + 200
+Mise en évidence de Y :
+Y * (1 - c1 + c1 * t1) = c0 + c1 * t0 + b0 - b1 * i + 200
+L'équilibre est donc : 
+Y = (c0 - t1 * c0 + b0 - b1 * i+ G) / (1 - c1 + c1 * t1)
+Le multiplicateur est donc : 
+1 / (1 - c1 + c1 * t1)
+
+C|1 / (1 - c1 + c1 * t1)|V
+C|1 - c1 + c1 * t1|F
+C|1 / (1 - c1 - c1 * t1)|F
+C|1 - c1 - c1 * t1|F
+
+Q|En économie ouverte, quelles sont les causes possibles d'un déplacement vers la droite de la courbe IS ? 
+C|- Augmentation des dépenses publiques
+- Augmentation des taxes. 
+ |F
+C|- Augmentation des dépenses publiques
+- Diminution des taxes
+ |V
+C|- Augmentation des dépenses publiques
+- Diminution des taxes. 
+- Diminution du taux d'intérêt
+ |F
+ C|- Augmentation des dépenses publiques
+- Augmentation des taxes. 
+- Diminution du taux d'intérêt
+ |F
+
+Q|En économie fermée, quelles sont les causes possibles d'un déplacement de LM vers la droite ? 
+C|- Une augmentation de l'offre de monnaie
+- Une diminution du niveau des prix
+ |V
+C|- Une diminution de l'offre de monnaie
+- Une augmentation du niveau des prix
+ |F
+C|- Une augmentation de l'offre de monnaie
+- Une augmentation du niveau des prix
+ |F
+C|- Une diminution de l'offre de monnaie
+- Une diminution du niveau des prix
+ |F

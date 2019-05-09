@@ -136,7 +136,7 @@ public class QuestionActivity extends AppCompatActivity implements OnClickListen
             layoutChoix.removeAllViews();
             boutonsChoix.clear();
             for(int i = 0; i < qst.getNbChoix(); i++) {
-                TextView bouton = createBoutonChoix();
+                TextView bouton = createBoutonChoix_singleChoice();
                 boutonsChoix.add(bouton);
                 layoutChoix.addView(boutonsChoix.get(i));
             }
@@ -144,25 +144,37 @@ public class QuestionActivity extends AppCompatActivity implements OnClickListen
         
         int choixUtilisateur = defi.getChoix(joueurs.get(numeroJoueur), numeroQuestion);
         
+        ArrayList<Choix> choix = qst.getChoix();
+        
         affiche_texteQuestion.setText(qst.getText());
+        if (qst.getText().split("\n").length > 2) {
+            affiche_texteQuestion.setTextAppearance(this, R.style.DefaultTextMini);
+        } else {
+            affiche_texteQuestion.setTextAppearance(this, R.style.DefaultTextPetit);
+        }
+
         for (int i = 0; i < boutonsChoix.size(); i++) {
-            boutonsChoix.get(i).setTag("" + qst.getChoix(i).getNumero());
-            if (choixUtilisateur == qst.getChoix(i).getNumero()) {
+            boutonsChoix.get(i).setTag("" + choix.get(i).getNumero());
+            if (choixUtilisateur == choix.get(i).getNumero()) {
                 boutonsChoix.get(i).setBackgroundDrawable(getResources().getDrawable(R.drawable.default_bouton_choix_c));
             } else {
                 boutonsChoix.get(i).setBackgroundDrawable(getResources().getDrawable(R.drawable.default_bouton_choix));
             }
-            boutonsChoix.get(i).setText(qst.getChoix(i).getText());
+            if (choix.get(i).getText().contains("\n")) {
+                boutonsChoix.get(i).setTextAppearance(this, R.style.DefaultTextMini);
+            } else {
+                boutonsChoix.get(i).setTextAppearance(this, R.style.DefaultTextPetit);
+            }
+            boutonsChoix.get(i).setText(choix.get(i).getText());
         }
     }
     
-    private TextView createBoutonChoix() {
+    private TextView createBoutonChoix_singleChoice() {
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
                                                LayoutParams.WRAP_CONTENT);
         params.setMargins(0,5,0,5);
         TextView bouton = new TextView(this);
         bouton.setLayoutParams(params);
-        bouton.setTextAppearance(this, R.style.DefaultTextPetit);
         bouton.setOnClickListener(this);
         return bouton;
     }

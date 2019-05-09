@@ -45,6 +45,13 @@ public class NewCompte extends AppCompatActivity {
         
         connexion.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
+                if (userID.getText().toString().equals("") ||
+                   password.getText().toString().equals("") ||
+                   c_password.getText().toString().equals("") ||
+                   userAge.getText().toString().equals("")) {
+                    afficheErreur(-10, null);
+                    return;
+                }
                 String login = userID.getText().toString();
                 String mdp = password.getText().toString();
                 String c_mdp = c_password.getText().toString();
@@ -90,6 +97,8 @@ public class NewCompte extends AppCompatActivity {
             message = getResources().getString(R.string.Connexion_CODE_ERREUR_6);
         } else if (code == -7) {
             message = getResources().getString(R.string.Connexion_CODE_ERREUR_7);
+        } else if (code == -10) {
+            message = getResources().getString(R.string.Connexion_CODE_ERREUR_10);
         }
         LinearLayout toastLayout = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.toast_view, null);
         TextView toastText = (TextView) toastLayout.findViewById(R.id.toast_text);

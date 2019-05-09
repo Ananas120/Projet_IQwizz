@@ -135,6 +135,8 @@ public class Question extends BDDItem {
                 } else if (infos[0].equals("C")) {
                     if (texteChoix != null) { liste_texte_choix.add(texteChoix); }
                     type_ajout = 3; texteChoix = lignes[i] + "\n";
+                } else {
+                    if (type_ajout == 3) { texteChoix += lignes[i] + "\n"; }
                 }
             }
         }
@@ -145,7 +147,7 @@ public class Question extends BDDItem {
         }
         if (explicationQuestion == null) { explicationQuestion = "NULL"; }
         if (imageQuestion == null) { imageQuestion = "NULL"; }
-        return new Question(id, texteQuestion, categorie, imageQuestion, explicationQuestion, liste_choix);
+        return new Question(id, texteQuestion.replace("\"", "\"\""), categorie, imageQuestion, explicationQuestion.replace("\"", "\"\""), liste_choix);
     }
     
     public ArrayList<String> getCommandes(boolean withCommandesChoix) {

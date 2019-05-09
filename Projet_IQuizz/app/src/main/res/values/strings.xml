@@ -14,7 +14,7 @@
 
     <string name="ancienPassword">Ancien mot de passe</string>
     <string name="nouveauPassword">Nouveau mot de passe</string>
-    <string name="sexe">Genre :</string>
+    <string name="sexe">Sexe :</string>
     <string name="sexeM">Homme</string>
     <string name="sexeF">Femme</string>
     <string name="sexeA">Autre</string>
@@ -63,7 +63,7 @@
     <string name="Connexion_CODE_ERREUR_5">Le mot de passe est trop court (minimum 5 caractères)</string>
     <string name="Connexion_CODE_ERREUR_6">Le nom d\'utilisateur existe déjà !</string>
     <string name="Connexion_CODE_ERREUR_7">Une erreur inconnue est survenie lors de la connexion</string>
-
+    <string name="Connexion_CODE_ERREUR_10">Veuillez remplir tous les champs</string>
 
     <string name="description_fleche_inactif">Fleche de retour arrière, non cliquable</string>
     <string name="description_fleche">Fleche de retour arrière, cliquable</string>
