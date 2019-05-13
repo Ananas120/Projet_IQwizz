@@ -14,6 +14,12 @@ import android.content.Context;
 
 import com.example.projetcoo.projet_iquizz.modele.*;
 
+/*
+    Cette classe est chargee de tout ce qui est recuperation et stockage des donnees dans la Base De Donnee. 
+    Elle est construite de sorte que les methodes 'public' soient tres courtes, se ressemblent toutes et ne font qu'appeler la methode 'private' correspondante. 
+    Cette structure permet le polymorphisme facilite mais aussi de pouvoir modifier tres facilement l'acces a la BDD car il ne faudrait changer qu'une seule methode (la private) afin de modifier la requete SQL SELECT par exemple. 
+    Il s'agit d'une classe Singleton ce qui permet l'acces facilite depuis les differentes activites. 
+*/
 public class BDD extends SQLiteOpenHelper {
     
     public static final class Sexe {
@@ -53,6 +59,12 @@ public class BDD extends SQLiteOpenHelper {
         this.data = DataHolder.getInstance();
         this.remplisBDD(this.getWritableDatabase(), filename);
     }
+    /*
+        Fonction remplissant la BDD sur base d'un (ou plusieurs) fichiers. 
+        S'il s'agit d'un fichier quizz_..., il va appeler createQuizzFromFile() puis exécuter les requêtes pour ajouter le quizz. 
+        S'il s'agit d'un fichier requetes_... alors il va simplement recuperer toutes les requetes du fichier et les executer. 
+        S'il recoit "all" comme filename alors il va appliquer cette methode sur tous les fichiers du dossier assets. 
+    */
     private void remplisBDD(SQLiteDatabase db, String filename) {
         if (filename.equals(CREATE_DATABASE_FILENAME) || filename.equals(DESTROY_DATABASE_FILENAME)) {
             return;
@@ -74,12 +86,15 @@ public class BDD extends SQLiteOpenHelper {
         } else { return; }
     }
 
+    //Execute les methodes presentes dans le fichier requetes_creation
     public void onCreate(SQLiteDatabase db) {
         execSQLFromFile(db, CREATE_DATABASE_FILENAME);
     }
+    //Execute les requetes dans le fichier requetes_destruction
     public void onDestroy(SQLiteDatabase db) {
         execSQLFromFile(db, DESTROY_DATABASE_FILENAME);
     }
+    //Detruit puis reconstruis la BDD. 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onDestroy(db);
         onCreate(db);
@@ -94,7 +109,11 @@ public class BDD extends SQLiteOpenHelper {
     public void saveState() {
         this.data.saveState(getWritableDatabase());
     }
-    
+    /*
+        Execute les requetes SQL presentes dans un fichier. 
+        Pour ce faire, la methode lit le fichier et cree une nouvelle commande a chaque fois qu'elle rencontre un ';'. 
+        Ensuite, elle envoie la liste de commandes a la methode execSQLCommandes()
+    */
     private void execSQLFromFile(SQLiteDatabase db, String filename) {
         BufferedReader fichier;
         ArrayList<String> liste_commandes = null;         
@@ -121,6 +140,10 @@ public class BDD extends SQLiteOpenHelper {
         }
         execSQLCommandes(db, liste_commandes);
     }
+    /*
+        Prend en argument une liste de commandes a executer. 
+        Si jamais une des commandes echoue, elle l'affiche ainsi que le message d'erreur afin que l'on puisse voir ce qui s'est passe (le fait dans lasortie erreur standard). 
+    */
     private void execSQLCommandes(SQLiteDatabase db, ArrayList<String> commandes) {
         if (commandes != null) {
             for (int i = 0; i < commandes.size(); i++) {
@@ -133,6 +156,11 @@ public class BDD extends SQLiteOpenHelper {
             }
         }
     }
+    /*
+        Cette methode va creer un quizz sur base d'un fichier structure d'une certaine maniere. Pour ce faire, elle va diviser le fichier en questions, appeler la methode Question.buildFromString qui va retourner la Question. 
+        Ensuite elle va creer les 4 quizz classiques en fonction de la categorie (le nom du fichier) et ajouter les 4 quizz et les questions dans la BDD. 
+        Si jamais une question existe deja (que le fichier a deja ete utilise), la methode ne creera rien. 
+    */
     private void execSQLFromQuizzFile(SQLiteDatabase db, String filename) {
         ArrayList<Quizz> quizz = new ArrayList<Quizz>();
         
@@ -205,6 +233,12 @@ public class BDD extends SQLiteOpenHelper {
     
     public DataHolder getData() { return this.data; }
 
+    /*
+        Toutes les methodes 'public' fonctionnent sur le meme schema : 
+        1) regarde dans DataHolder si l'element n'est pas stocke. 
+        - Si non : le recupere en appelant la methode private correspondante, le stocke dans DataHolder puis le retourne. 
+        - Si oui : le retourne directement. 
+    */
     public boolean userExiste(String login) {
         return userExiste(this.getReadableDatabase(), login);
     }
@@ -345,6 +379,11 @@ public class BDD extends SQLiteOpenHelper {
         return getStatistiques(getReadableDatabase(), user);
     }
     
+    /*
+        Les methodes 'private' fonctionnent sur le meme schema : 
+        Prend en argument un objet SQLiteDatabase (initialise dans la methode public appelant la methode private) et un argument supplementaire en fonction de ce qui est demande. 
+        La methode va donc executer la commande SQL SELECT pour recuperer les informations voulues et va ensuite la retourner une fois mise sous la bonne forme (au lieu d'un Cursor, un Quizz ou une ArrayList, ...). 
+    */
     private boolean userExiste(SQLiteDatabase db, String login) {
         Cursor c = db.rawQuery("SELECT * FROM Utilisateurs WHERE Login = ?", new String []{login});
         if (c.getCount() == 1) {

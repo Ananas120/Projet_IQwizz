@@ -261,3 +261,204 @@ C|- Une augmentation de l'offre de monnaie
 C|- Une diminution de l'offre de monnaie
 - Une diminution du niveau des prix
  |F
+
+Q|Si les dépenses publiques et les impôts se réduisent simultanément du même montant, la courbe IS ... 
+QE|Si les impôts diminuent, la consommation va augmenter mais va augmenter moins fort que la diminution des impôts car une partie du revenu sera épargné. 
+C|se déplace vers la gauche|V
+C|se déplace vers la droite|F
+C|ne se déplace pas|F
+
+Q|Dans le modèle de la droite IS, laquelle des variables est-elle exogène ?
+C|Consommation (C)|F
+C|Investissement (I)|F
+C|Dépenses publiques (G)|V
+C|Epargne (S)|F
+
+Q|Supposons que le marché des biens et services soit en équilibre. Si les recettes fiscales sont supérieures aux dépenses publiques, alors ...
+QE|I = S + (G - T)
+Si G - T > 0 (dépenses supérieures aux dépenses, énoncé)
+Alors I > S 
+C|I > S|V
+C|I < S|F
+C|(T - G) < 0|F
+C|I > S + (T - G)|F
+
+Q|L'économie d'un pays fonctionnant selon le modèle IS-LM est décrite par les équations suivantes : 
+C = 100 + 0,75 * (Y - T)
+T = 80
+I = 90 - 100 * i
+G = 100
+M^d = Y * (O,5 - i)
+M^s = 440
+
+Que vaut le revenu et le taux d'intérêt d'équilibre ? 
+
+QE|Condition pour que ce soit à l'équilibre : 
+Y = C + I + G et M^d = M^s
+
+On a donc 2 équations et 2 inconnues : 
+Y = 100 + 0,75(Y - 80) + 90 - 100i + 100 (1)
+440 = Y * (0,5 - i) (2)
+
+Y - 0,75Y = 100 - 60 + 90 - 100i + 100 (1)
+440 = (400 - 240 + 360 - 400i + 400) * (0,5 - i) 
+440 = (920 - 400i) * (0,5 - i)
+440 = 460 - 200i - 920 + 400 i^2
+400 i^2 - 1120i + 20 = 0
+40 i^2 - 112i + 2 = 0
+Rho = 112^2 - 4 * 40 * 2 = 12 224
+r1 = (112 + sqrt(rho)) / 80 = 2,783
+r2 = (112 - sqrt(rho)) / 80 = 0, 0179
+
+r1 n'a pas de sens car elle impliquerait un revenu négatif (voir (2)), on conserve donc r1 et on la remplace dans la formule (1 ou 2) :
+440 = Y * (0,5 - 0,0179) = 912,673 (2)
+Y = 912,673
+
+Y = 920 - 400 i
+Y = 920 - 400 * 0,0179
+Y = 912,84
+
+C| 
+Y = 912
+i = 2,783
+|F
+C| 
+Y = 912
+i = 0,0179
+|V
+C| 
+Y = 456
+i = 0,0179
+|F
+C| 
+Y = 1824
+i = 0,0179
+|F
+
+Q|L'économie d'un pays fonctionnant selon le modèle IS-LM est décrite par les équations suivantes : 
+C = 100 + 0,75 * (Y - T)
+T = 80
+I = 90 - 100 * i
+G = ?
+M^d = Y * (O,5 - i)
+M^s = 440
+
+Quel est le taux d'intérêt d'équilibre et le niveau de dépenses publiques pour obtenir un revenu d'équilibre Y = 1000 ?
+QE|Pour obtenir Y = 1000, il faut déjà déterminer le taux d'intérêt d'équilibre que l'on trouve dans l'équation LM M^s = M^d car elle n'est pas impactée par G (dépenses publiques). 
+440 = 1000 * (0,5 - i)
+440 - 500 = 1000i
+60 / 1000 = i
+i = 0,06 = 6%
+
+Maintenant on peut simplement replacer i dans l'équation IS pour trouver G : 
+Y = C + I + G
+1000 = (100 + 0,75 * (1000 - 80)) + (90 - 100 * 0,06) + G
+1000 = 790 + 84 + G
+G = 1000 - 790 - 84 = 210 - 84 = 126
+G = 126
+
+C|G = 126 et i = 6%|V
+C|G = 226 et i = 3%|F
+C|G = 252 et i = 6%|F
+C|G = 226 et i = 6%|F
+C|On manque d'informations pour déterminer|F
+
+Q|Supposons que le gouvernement augmente les impôts pour réduire le déficit budgétaire. 
+En se basant sur le modèle IS-LM, que peut-on en déduire ? 
+QE|Une augmentation des impôts entraine une baisse de la consommation et un déplacement de IS vers la gauche. Ce déplacement entraine donc une diminution de la production et du taux d'intérêt d'équilibre. 
+La baisse de la production tend à faire baisser l'investissement tandis que la baisse du taux d'intérêt tend à faire monter l'investissement --> comportement ambigu. 
+C|Les dépenses d'investissement vont augmenter|F
+C|Les dépenses d'investissement vont diminuer|F
+C|Les dpenses d'investissement ne vont pas changer|F
+C|Les dépenses d'investissement peuvent augmenter, diminuer ou ne pas changer|V
+
+Q|Dans le modèle IS-LM ...
+QE|Pour qu'il y ait déplacement le long de la courbe, 
+C|Une variation des investissements suite à une variation du taux d'intérêt entraine un déplacement le long de la courbe IS|V
+C|Une variation des taxes influence la consommation et entraine un déplacement del'économie le long de la courbe IS|F
+C|Une variation des dépenses publiques entraine un déplacement de l'économie le long de la courbe IS|F
+
+Q|Dans le modèle IS-LM, une diminution de la pression fiscale a pour effet ... 
+QE|Une diminution des taxes entraine un déplacement de IS vers la droite et donc une hausse de la production Y et une hausse du taux d'intérêt i. 
+C|Une croissance de la consommation qui permet un niveau de production plus élevé|V
+C|Une réduction des dépenses publiques, ce qui fait baisser le niveau de production de l'économie|F
+C|Une augmentation de la production et une baisse du taux d'intérêt|F
+
+Q|Dans le modèle IS-LM, si la Banque Centrale a une cible de taux d'intérêt à satisfaire, après une baisse de la pression fiscale, nous avons ... 
+QE|Si T diminue, il y a un déplacement de IS vers la droite et donc une augmentation de Y qui implique une augmentation de la demande de monnaie. Cette hausse de la demande de monnaie se traduit soit par une hausse du taux d'intérêt soit, ici, une hausse de l'offre de monnaie. 
+C|Une réduction de la demande de monnaie, une augmentation de la demande de biens et donc une augmentation de la production|F
+C|Une hausse de la production, une hausse de la demande de monnaie et une augmentation de l'offre de monnaie par la Banque Centrale|V
+C|Une hausse de la demande de monnaie suite à l'augmentation de la production et donc une réduction de l'offre de monnaie par la Banque Centrale|F
+
+Q|Dans le modèle WS-PS, la courbe PS ...
+C|Est horizontale car le taux de chômage n'a pas d'impact sur la détermination des prix des entreprises.|V
+C|Est décroissante car le taux de chômage impacte les salaires réels négociés.|F
+C|Est horizontale car la marge des entreprises n'a pas d'impact sur les salaires négociés.|F
+
+Q|Dans le modèle WS-PS, une diminution des allocations de chômage ... 
+QE|Celà entraine un déplacement de WS vers la gauche et diminue donc le pouvoir de négociation des travailleurs. Le salaire d'équilibre ne changeant pas, le taux de chômage structurel va avoir tendance à diminuer et donc la production structurelle à augmenter. 
+C|augmente le pouvoir de négociation des travailleurs|F
+C|conduit à une diminution du salaire réel d'équilibre|F
+C|pousse la production structurelle à augmenter|V
+
+Q|Une hausse du taux de chômage structurel peut être expliquée par ... (quelle réponse est fausse)
+QE|Pour que le taux de chômage monte, vu que PS est horizontale, il faut que WS se déplace vers la droite alors qu'une hausse des allocations de salaire fait se déplacer WS vers la gauche.  
+C|un relâchement du droit de la concurrence|F
+C|le progrès technologique|F
+C|une baisse des allocations de chômage|V
+
+Q|Voici quelques statistiques sur le chômage et la population aux Pays-Bas en 2007 : 
+Le nombre de personnes est exprimé en milliers de personnes
+Pop agée de 15 ans et - : 2947
+Pop agée de 16 à 64 ans : 11043
+Pop agée de 65 ans et + : 2392
+Taux de chômage         : 3,2%
+Taux de participation   : 79,5%
+
+Sur base de ces données, quelle est la population active aux Pays-Bas en 2007 ?
+
+QE|u = U / L -> L * u = U
+L = U + N -> N = L - U
+
+L = Pop entre 16 et 64 ans * TAP (taux participation)
+N = L - (L * u)
+
+L = 11043 * 0,795 = 8 779 185
+U = L * u = 8 779 185 * 0,032
+U = 280 933
+
+N = L - U = 8 779 185 - 280 933
+N = 8 498 252
+
+C|8 779 185|F
+C|280 933|F
+C|8 498 252|V
+
+Q|Dans le modèle IS-LM, une augmentation du niveau des prix (P) entraine ... 
+QE|Une augmentation du niveau des prix entraine une diminution de la masse monétaire réelle (M / P diminue) ce qui a pour effet, à taux d'intérêts constants, de diminuer la production et donc un déplacement vers la gauche de LM. 
+C|Un déplacement de IS vers la droite|F
+C|Un déplacement de IS vers la gauche|F
+C|Un déplacement de LM vers la droite|F
+C|Un déplacement de LM vers la gauche|V
+
+Q|Quelles sont les caractéristiques graphiques de la courbe AD ? 
+QE|La courbe AD est la courbe de demande agrégée (demande globale) et met en relation la production (Y) avec les prix (P). 
+En axe x nous avons donc la production Y. 
+En axe y nous avons donc le niveau des prix P. 
+Nous pouvons donc imaginer que plus le prix est élevé, plus la production est faible. Il s'agit donc d'une courbe décroissante. 
+C|Axe x : production (Y)
+Axe y : niveau des prix (P)
+Courbe décroissante
+|V
+C|Axe x : production (Y)
+Axe y : niveau des prix (P)
+Courbe croissante
+|F
+C|Axe x : production (Y)
+Axe y : demande totale (Z)
+Courbe décroissante
+|F
+C|Axe x : production (Y)
+Axe y : demande totale (Z)
+Courbe croissante
+|F

@@ -93,7 +93,7 @@ public class FinQuizz extends AppCompatActivity implements OnClickListener {
             int choixUtilisateur = defi.getChoix(joueur, i);
             int valeur = 0;
             if (choixUtilisateur != -1) { 
-                choixUtilisateur = questions.get(i).getChoix(choixUtilisateur).getValeur();
+                valeur = questions.get(i).getChoix(choixUtilisateur).getValeur();
             }
             
             ImageView image = getImageReponse(hauteur, largeur, valeur);
