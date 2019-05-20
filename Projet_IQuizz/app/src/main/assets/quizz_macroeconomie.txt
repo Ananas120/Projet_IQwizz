@@ -462,3 +462,669 @@ C|Axe x : production (Y)
 Axe y : demande totale (Z)
 Courbe croissante
 |F
+
+Q|Quelle est l'équation représentant la courbe IS (en économie fermée) ? 
+C|Y = C + I + G + NX|F
+C|Y = C + I + G|V
+C|W / P = F(u, z)|F
+C|W / P = 1 / (1 + mu)|F
+C|M = P . Y . L(i)|F
+C|W = P^e * F(u,z)|F
+C|P = P^e * F(u, z) * (1 + mu)|F
+C|Y = Y(M/P, G, T)|F
+
+Q|Quelle est l'équation représentant la courbe IS (en économie ouverte) ? 
+C|Y = C + I + G + NX|V
+C|Y = C + I + G|F
+C|W / P = F(u, z)|F
+C|W / P = 1 / (1 + mu)|F
+C|M = P . Y . L(i)|F
+C|W = P^e * F(u,z)|F
+C|P = P^e * F(u, z) * (1 + mu)|F
+C|Y = Y(M/P, G, T)|F
+
+Q|Quelle est l'équation représentant la courbe AS ? 
+C|Y = C + I + G + NX|F
+C|Y = C + I + G|F
+C|W / P = F(u, z)|F
+C|W / P = 1 / (1 + mu)|F
+C|M = P . Y . L(i)|F
+C|W = P^e * F(u,z)|F
+C|P = P^e * F(1 - Y/L, z) * (1 + mu)|V
+C|Y = Y(M/P, G, T)|F
+
+Q|Quelle est l'équation représentant la courbe AD ? 
+C|Y = C + I + G + NX|F
+C|Y = C + I + G|F
+C|W / P = F(u, z)|F
+C|W / P = 1 / (1 + mu)|F
+C|M = P . Y . L(i)|F
+C|W = P^e * F(u,z)|F
+C|P = P^e * F(u, z) * (1 + mu)|F
+C|Y = Y(M/P, G, T)|V
+
+Q|Quelle est l'équation représentant la courbe WS ? 
+C|Y = C + I + G + NX|F
+C|Y = C + I + G|F
+C|W / P = F(u, z)|V
+C|W / P = 1 / (1 + mu)|F
+C|M = P . Y . L(i)|F
+C|W = P^e * F(u,z)|F
+C|P = P^e * F(u, z) * (1 + mu)|F
+C|Y = Y(M/P, G, T)|F
+
+Q|Quelle est l'équation représentant la courbe PS ? 
+C|Y = C + I + G + NX|F
+C|Y = C + I + G|F
+C|W / P = F(u, z)|F
+C|W / P = 1 / (1 + mu)|V
+C|M = P . Y . L(i)|F
+C|W = P^e * F(u,z)|F
+C|P = P^e * F(u, z) * (1 + mu)|F
+C|Y = Y(M/P, G, T)|F
+
+Q|Est-ce que la courbe AS passe toujours par le point d'équilibre structurel (où les niveau des prix est égal au niveau des prix anticipés et la production est égale à la production structurelle) ?
+C|Vrai|V
+C|Faux|F
+
+Q|Que provoque une baisse des prix anticipés sur la courbe AS ? 
+QE|AS : P = P^e * F(1 - Y/L, z) * (1 + mu)
+Une baisse des prix anticipés entraine, à une production équivalente, un prix plus bas et donc un déplacement de AS vers le bas (la droite). 
+C|Un déplacement vers le bas|V
+C|Un déplacement vers la gauche|F
+C|Pas de déplacement de la courbe mais un déplacement sur la courbe|F
+
+Q|Que provoque une baisse de la marge (mu) sur la courbe AS ? 
+QE|AS : P = P^e * F(1 - Y/L, z) * (1 + mu)
+Si mu diminue, pour une même production, les prix baissent donc déplacement de AS vers le bas (ou la droite). 
+C|Un déplacement vers le bas|V
+C|Un déplacement vers le haut|F
+C|Pas de déplacement de la courbe mais un déplacement sur la courbe|F
+
+Q|Si on se met à moyen terme, dans le modèle WS-PS, que provoque le rejet de l'hypothèse P = P^e ? 
+C|Le taux de chômage structurel différent du taux de chômage d'équilibre|V
+C|Aucune modification|F
+C|On ne sait plus déterminer le taux de chômage d'équilibre|F
+
+Q|Considérons une économie fermée décrite par les équations suivantes : 
+C = c0 + c1 * (Y - T)
+I = b0 - b1 * i
+M^d = m1 * Y - m2 * i
+F(u, z) = 1 + z - u
+P^_t = P_(t-1)
+Y = A * N
+A = 1
+Et les équations d'équilibres : 
+Y = C + I + G
+M^s / P = m1 * Y - m2 * i
+W / P^e = F(u, z)
+P = (1 + mu) * W
+
+Quelle est l'équation de la courbe AD (en se basant sur les équations IS-LM) ?
+
+QE|La courbe AD se base sur les équations de IS-LM : 
+IS : Y = C + I + G
+LM : M^s / P = M^d
+Si on remplace par les valeurs : 
+IS : 
+Y = (c0 + c1 * (Y - T)) + (b0 - b1 * i) + G
+Y - c1 * Y = c0 - c1 * T + b0 - b1 * i + G
+Y = (c0 - c1 * T + b0 - b1 * i + G) / (1 - c1)
+LM : 
+M^s / P = m1 * Y - m2 * i
+
+Comme AD est une relation entre P et Y, il faut que ce soient les seules inconnues hors là, on a encore P, Y et i. 
+Pour faire disparaître i, on va l'isoler dans LM puis remplacer sa valeur dans IS : 
+i = ((m1 * Y) / m2) - (M^s / P * m2)
+Remplacement dans IS : 
+Y = (c0 + c1 * (Y - T)) + (b0 - b1 * ((m1 * Y) / m2) - (M^s / P * m2)) + G
+Y = c0 + c1*Y - c1*T + b0 - b1*m1*Y / m2 + (b1*M^s) / (P*m2) + G
+Y - c1 * Y + b1 * m1 * Y / m2 = c0 - c1 * T + b0 + (b1 * M^s) / (P * m2) + G
+Y = (m2 / ((1 - c1) * m2 + b1 * m1)) * (c0 - c1 * T + b0 + (b1 * M^s) / (P * m2) + G)
+
+C|Y = (m2 / ((1 - c1) * m2 + b1 * m1)) * (c0 - c1 * T + b0 + (b1 * M^s) / (P * m2) + G)|V
+C|Y = (m2 / ((1 + c1) * m2 + b1 * m1)) * (c0 - c1 * T + b0 + (b1 * M^s) / (P * m2) + G)|F
+C|Y = (c0 + c1 * (Y - T)) + (b0 - b1 * ((m1 * Y) / m2) - (M^s / P * m2)) + G|F
+C|Y = (c0 - c1 * T + b0 - b1 * i + G) / (1 - c1)|F
+
+Q|Considérons une économie fermée décrite par les équations suivantes : 
+C = c0 + c1 * (Y - T)
+I = b0 - b1 * i
+M^d = m1 * Y - m2 * i
+F(u, z) = 1 + z - u
+P^_t = P_(t-1)
+Y = A * N
+A = 1
+Et les équations d'équilibres : 
+Y = C + I + G
+M^s / P = m1 * Y - m2 * i
+W / P^e = F(u, z)
+P = (1 + mu) * W
+
+Quelle est l'équation de la courbe AS (en se basant sur WS-PS) ? 
+
+QE|L'équation AS se base sur les équations WS-PS 
+WS : W = P^e * F(u,z)
+PS : P = W * (1 + mu)
+On a donc AS : 
+P = P^e * F(u, z) * (1 + mu)
+Si on remplace les valeurs par celles de l'énoncé : 
+P = P_(t-1) * (1 + z - u) * (1 + mu)
+Si on remplace u par 1 - Y / L (car on fait l'hypothèse que Y + N) : 
+P = P_(t-1) * (1 + z - 1 + Y / L) * (1 + mu)
+Y = (P * L) / (P_(t-1) * (1 + mu)) - z * L
+
+C|P = P_(t-1) * (2 + Y / L + z) * (1 + mu)|F
+C|P = P_(t-1) * (Y / L - z) * (1 + mu)|F
+C|Y = (P * L) / (P_(t-1) * (1 + mu)) - z * L|V
+C|Y = (m2 / ((1 - c1) * m2 + b1 * m1)) * (c0 - c1 * T + b0 + (b1 * M^s) / (P * m2) + G)|F
+
+Q|Considérons une économie fermée décrite par les équations suivantes : 
+C = c0 + c1 * (Y - T)
+I = b0 - b1 * i
+M^d = m1 * Y - m2 * i
+F(u, z) = 1 + z - u
+P^_t = P_(t-1)
+Y = A * N
+A = 1
+Et les équations d'équilibres : 
+Y = C + I + G
+M^s / P = m1 * Y - m2 * i
+W / P^e = F(u, z)
+P = (1 + mu) * W
+Et les valeurs : 
+c0 = 100    c1 = 0,85
+b0 = 90     b1 = 100
+m1 = 0,5    m2 = 500
+T = 250     G = 300
+M^s = 300   L = 3300
+z = 0,5     mu = 0,1
+
+Sachant que l'équilibre initial de court terme est aussi l'équilibre de moyen terme, quelle est la production et le niveau des prix d'équilibre ? 
+QE|Avec quelques calculs, on peut trouver les équations AS et AD : 
+AS : Y = (P * L) / (P_(t-1) (1 + mu)) - z * L
+AD : Y = (m2 / ((1 - c1) * m2 + b1 * m1)) * (c0 - c1 * T + b0 + (b1 * M^s) / (P * m2) + G)
+
+Si on remplace les valeurs : 
+AS : Y = (P * L) / (P_(t-1) * (1 + mu)) - z * 3300
+Y = 3300 P / 1,1 * P_(t-1) - 0,5 * 3300
+Y = 3000 P / P_(t-1) - 1650
+
+AD : Y = (500 / ((1 - 0,85) * 500 + 100 * 0,5)) * 
+(100 - 0,85 * 250  + 90 + (100 * 300) / P * 500 + G)
+Y = 240 / P - 90 + 4 * G
+
+Comme on dit que "l'équilibre à court terme est l'équilibre à moyen terme", on peut dire que P = P^e (= P_(t-1) donc)
+AS : Y = 3000 P / P_(t-1) - 1650
+Y = 1350 (= Y_n puisque P = P^e)
+En remplaçant ce résultat dans AD : 
+1350 = 240 / P - 90 + 1200
+P = 1
+
+C|Y = 1350, P = 1|V
+C|Y = 3700, P = 1|F
+C|Y = 3700, P = 2|F
+C|Y = 1350, P = 2|F
+
+Q|Quelle évolution entraine un déplacement vers le bas de la courbe d'offre globale (AS) à court terme ? 
+QE|Si z monte, les salaires montent pour un même Y. 
+Si mu monte, les salaires montent pour un même Y. 
+Si M/P diminue, i monte et donc Y diminue et donc déplace AD vers la gauche et ne déplace donc pas AS. 
+C|Une augmentation de la marge du prix fixé par les entreprises sur les coûts mu. |F
+C|Une augmentation des indemnités d'assurance chômage. |F
+C|Une réduction de l'offre de monnaie. |F
+C|Aucune réponse n'est correcte. |V
+
+Q|Lorsque le niveau des prix est égal au niveau anticipé des prix : 
+C|Le marché de la monnaie est à l'équilibre. |F
+C|La production est égale à son niveau naturel. |V
+C|Le taux de chômage est égal à zéro. |F
+
+Q|Dans la relation de demande globale, une augmentation du niveau des prix entraine une baisse du produit en raison de son effet sur :
+QE|Si P monte alors M / P diminue, i va donc monter et Y diminuer. 
+Les dépenses publiques sont exogènes et le salaire nominal fait partie de AS et non AD. 
+C|Le salaire nominal. |F
+C|Les dépenses publiques. |F
+C|La quantité réelle de monnaie. |V
+
+Q|Supposons que la production soit initialement égale à son niveau naturel. Quel est l'effet de court terme d'une politique monétaire expansionniste ? 
+QE|Si M monte, M / P augmente et donc M^s > M^d --> i diminue. 
+Si i diminue, Y augmente et donc u diminue (puisque N augmente car il est le seul facteur de production). 
+Si u diminue, F(u, z) augmente, donc W augmente et donc P augmente. 
+C|Une hausse du taux d'intérêt. |F
+C|Une baisse du chômage. |F
+C|Une hausse des prix. |F
+C|Toutes ces réponses sont correctes. |V
+C|Aucune réponse n'est correcte. |F
+
+Q|Dans AS-AD, une révision à la baisse des anticipations de prix entraine à court terme (quelle réponse est fausse) : 
+QE|WS : W = P^e * F(u, z) et donc si P^e diminue, P diminue. 
+P^e va impacter la droite AS (qui va être déplacée vers la droite). L'équilibre sera donc à un endroit différent sans que la courbe AD ne se soit déplacée, il s'agit donc bien d'un déplacement sur la courbe AD. 
+P^e diminue, le niveau des prix diminue pour tout Y --> M / P augmente --> i diminue --> Y augmente. (celà peut se voir grâce au déplacement de AS vers le bas). 
+C|Une diminution des salaires nominaux négociés. |F
+C|Un déplacement le long de la courbe AD. |F
+C|Une baisse de la production. |V
+
+Q|Supposons que la courbe de Philips augmentée des anticipations respecte l'équation suivante : 
+
+pi_t - pi_(t-1) = - alpha * (u_t - u_n)
+
+Si on a les valeurs suivantes : 
+taux de chômage structurel (u_n) = 4%
+alpha = 2
+Si on part d'une inflation initiale (t = 0) de 7% et que les autorités veulent maintenir le chômage à 5%, quelle sera l'inflation en t = 1, 2 et 3 ? 
+
+QE|Il suffit de remplacer dans l'équation : 
+
+Pour t = 1 : 
+pi_1 - pi_0 = - 2 * (u_1 - 0,04)
+Comme on sait que les autorités veulent maintenir le chômage à 5%, u_t = 0,05 :
+pi_1 - 0,07 = - 2 * (0,05 - 0,04)
+pi_1 = 0,05 = 5%
+
+Pour t = 2 : 
+Ici, on garde la même supposition sur le taux de chômage mais on part de l'inflation en pi_1 (de 5%) : 
+pi_2 - pi_1 = - 2 * (0,05 - 0,04)
+pi_2 = 0,03 = 3%
+
+Pour t = 3 : 
+Même raisonnement que pour t = 2 et on obtient : 
+pi_3 = 1%
+
+C|pi_0 = 7%, pi_1 = 5%, pi_2 = 3%, pi_3 = 1%|V
+C|pi_0 = 7%, pi_1 = 5%, pi_2 = 5%, pi_3 = 5%|F
+C|pi_0 = 5%, pi_1 = 3%, pi_2 = 1%, pi_3 = -1%|F
+C|pi_0 = 5%, pi_1 = 3%, pi_2 = 1%, pi_3 = 0%|F
+
+Q|Supposons que la courbe de Philips augmentée des anticipations respecte l'équation suivante : 
+
+pi_t - pi_(t-1) = - alpha * (u_t - u_n)
+
+Si on a les valeurs suivantes : 
+taux de chômage structurel (u_n) = 4%
+alpha = 2
+Si on part d'une inflation initiale (t = 0) de 7% et que les autorités veulent maintenir le chômage à 5% et que la moitié des salaires sont indexés. 
+Quelle sera l'inflation en t = 1, 2 et 3 ? 
+
+QE|Pour calculer avec indexation des salaires, il faut déjà rajouter l'indexation (lambda) dans l'équation : 
+
+pi_t - pi_(t-1) = (- alpha / (1 - lambda)) * (u_t - u_n)
+
+Ensuite, il suffit de remplacer les valeursdans l'équation (avec lambda = 0,5)
+
+Pour t = 1 : 
+pi_1 - pi_0 = (- 2 / 0,5) * (u_1 - 0,04)
+Comme on sait que les autorités veulent maintenir le chômage à 5%, u_t = 0,05 :
+pi_1 - 0,07 = - 4 * (0,05 - 0,04)
+pi_1 = 0,03 = 3%
+
+Pour t = 2 : 
+Ici, on garde la même supposition sur le taux de chômage mais on part de l'inflation en pi_1 (de 5%) : 
+pi_2 - pi_1 = (- 2 / 0,5) * (0,05 - 0,04)
+pi_2 = -0,01 = -1%
+
+Pour t = 3 : 
+Même raisonnement que pour t = 2 et on obtient : 
+pi_3 = -5%
+
+C|pi_0 = 7%, pi_1 = 3%, pi_2 = -1%, pi_3 = -5%|V
+C|pi_0 = 7%, pi_1 = 5%, pi_2 = 3%, pi_3 = 1%|F
+C|pi_0 = 7%, pi_1 = 3%, pi_2 = 0%, pi_3 = 0%|F
+C|pi_0 = 3%, pi_1 = -1%, pi_2 = -5%, pi_3 = -9%|F
+
+Q|Supposons que la courbe de Philips augmentée des anticipations respecte l'équation suivante : 
+
+pi_t - pi_(t-1) = - alpha * (u_t - u_n)
+
+Si on a les valeurs suivantes : 
+taux de chômage structurel (u_n) = 4%
+alpha = 2
+Quel est le ratio de sacrifice ? 
+
+QE|Le ratio de sacrifice représente l'augmentation du taux de chômage à avoir si on veut faire diminuer l'inflation de 1%. 
+Ici, on aurait donc (en exprimant tout en %) : 
+-1 = - alpha * (u_t - u_n)
+-1 = - 2 * (u_t - 4) 
+u_t = 4,5% 
+Il faudrait donc une augmentation de 0,5% de chômage pour perdre 1% d'inflation. 
+
+C|0,5%|V
+C|4,5%|F
+C|1%|F
+C|C'est quoi le ratio de sacrifice ?|F
+
+Q|Supposons une économie respectant la courbe de Philips, la loi d'Okun et la relation de demande globale. 
+Ces relations sont décrites par les équations suivantes : 
+
+pi_t - pi_(t-1) = - alpha * (u_t - u_n)
+u_t - u_(t-1) = beta * (g_yt - g_y)
+g_yt = g_mt - pi_t
+(avec g_t = la croissance potentielle de y, je ne sais pas faire la barre au-dessus du g)
+
+Avec les valeurs suivantes : 
+beta = 0,4  alpha = 1
+u_n = 6%    g_y = 3%
+pi_0 = 14%
+
+Quelle est la politique qui permet d'atteindre une inflation de 5% au bout de 3 années ? 
+
+QE|Il y a plusieurs manières de faire, l'une d'entre-elles serait de calculer le ratio de sacrifice (augmentation du chômage pour perdre 1% d'inflation) et le multiplier par 3. 
+En effet, on veut passer de 14 à 5% en 3 ans ce qui fait une diminution de 3% par ans. Il suffirait donc de multiplier ce ratio de sacrifice par 3 pour obtenir le taux de chômage à atteindre. 
+-1 = - 1 * (u_t - 6)
+u_t = 7% --> ratio de sacrifice = 1%
+Si on a une augmentation de chômage de 3% : 
+pi_1 - 14 = -1 * (9 - 6)
+pi_1 = 11%
+pi_2 - 11 = -1 * (9 - 6)
+pi_2 = 8%
+pi_3 - 9 = -1 * (9 - 6)
+pi_3 = 5% : gagné !
+
+C|Une augmentation de chômage de 3% par an|F
+C|Atteindre un taux de chômage de 9% pendant ces 3 années|V
+C|Augmenter le chômage mais on ne sait pas de combien de % exactement|F
+
+Q|La prise en compte des anticipations dans la théorie de la consommation prédit que, suite à une augmentation du revenu courant des ménages, la consommation de ceux-ci... 
+QE|Selon la théorie du revenu permanent, les agents prennent non seulement en compte leur revenu actuel mais aussi la valeur actualisée de leurs revenus futurs. Une hausse du revenu courant n'étant plus qu'une fraction du revenu "global", l'effet sur la consommation est moins important. 
+C|Augmentera plus que sans la prise en compte des anticipations|F
+C|Augmentera moins que sans la prise en compte des anticipations|V
+C|Augmentera autant que sans la prise en compte des anticipations|F
+
+C|Quand on introduit les anticipations dans le modèle du marché des biens, la courbe IS est toujoursdécroissante ... 
+C|mais devient plus horizontale. |F
+C|mais devient plus verticale. |V
+C|et ne change pas de pente. |F
+
+Q|Dans le modèle IS-LM avec anticipations, une diminution deu taux d'intérêt anticipé a pour conséquence ... 
+QE|Selon la théorie du revenu permanent, les agents basent leur consommation en fonction de leur revenu actuel et la valeur actualisée de leurs revenus futurs. Suite à une baisse du taux d'intérêt anticipé, cette valeur actualisée future va augmenter et donc augmenter la consommation et l'investissement. 
+C|Un déplacement de la courbe IS vers la droite|V
+C|Un déplacement de la courbe IS vers la gauche|F
+C|Un déplacement le long de la courbe IS|F
+
+Q|Une politique de consolidation budgétaire ... 
+C|peut être expansionniste à long terme, car des taux d'intérêts plus élevés stimulent l'investissement et donc la croissance. |F
+C|a plus de chance d'avoir un effet positif sur la production si les anticipations des agents poussent cesderniers à augmenter leur épargne. |F
+C|peut être expansionniste, même sur le court terme|V
+
+Q|Une contraction budgétaire non anticipée aura un effet d'autant plus négatif sur le cours des actifs que ... 
+QE|Ici, il faut déterminer l'impact du taux d'intérêt et du produit sur le cours des actions. Si Y augmente, les dividendes augmentent entrainant une hausse des cours. Lorsque i augmente, la valeur actualisée des profits futurs diminue entrainant donc une baisse des cours. 
+La contraction budgétaire génère une baisse de Y (et donc de i). L'effet négatif sera d'autant plus fort que la baisse de Y soit forte et que celle de i soit faible, ce qui est le cas lorsque l'économie se trouve dans une trappe à liquidité. 
+C|l'économie se trouve dans une trappe à liquidité|V
+C|la politique monétaire est expansionniste|F
+C|la courbe LM est pentue|F
+
+Q|La condition de parité des taux d'intérêts en taux de change fixe est : 
+QE|En taux de change fixe, la condition de parité se simplifie de telle sorte que i = i* car le taux de change anticipé = taux de change effectif. 
+C|Une relation basée sur le taux d'intérêt national, le taux d'intérêt étranger, le taux de change et le taux de change anticipé. |F
+C|une relation basée sur le taux d'intérêt national, le taux de change et le taux de change anticipé.|F
+C|une relation basée sur le taux d'intérêt national et le taux d'intérêt étranger. |V
+
+Q|En taux de change fixe. 
+C|La banque centrale abandonne la politique monétaire comme instrument de la politique macroéconomique.|V
+C|La banque centrale peut toujours influencer indirectement le niveaux d'investissement avec sa politique monétaire. |F
+C|L'économie étrangère n'a pas aucun effet sur l'économie nationale. |F
+
+Q|Une augmentation des dépenses publiques par le gouvernement en taux de change fixe : 
+QE|Une augmentation des dépenses publiques (G) a tendance à faire monter le taux d'intérêt. Or, vu qu'en taux de change fixe, le taux d'intérêt national = taux d'intérêt à l'étranger, il faut que l'offre de monnaie augmente pour évitercette hausse de i. 
+C|n'aura aucun effet sur la banque centrale|F
+C|Force la banque centrale à augmenter l'offre de monnaie. |V
+C|force la banque centrale à réduire l'offre de monnaie|F
+
+Q|En régime de taux de change fixe : 
+QE|Quand on parle de "taux de change fixe", on parle de la fixité du taux de change nominal, ce dernier ne peut donc pas changer. 
+De plus, une augmentation des prix nationaux (P) fait diminuer le taux de change réel car : 
+epsilon = EP* / P donc si P augmente, epsilon diminue. 
+Ce qui prouve bien que le taux de change réel peut changer. 
+C|une augmentation des prix étrangers augmente le taux de change nominal.|F
+C|une augmentation des prix nationaux augmente le taux de change réel. |F
+C|le taux de change réel peut changer. |V
+
+Q|La relation négative entre P et Y dans AD en économie ouverte et taux de change fixe : 
+QE|En économie ouverte, une hausse des prix entraine une dépressiation réelle (epsilon diminue) ce qui pousse les exportations nettes à la baisse. Celà explique le fait que AD soit décroissante. 
+C|s'explique de la même façon qu'en économie fermée. |F
+C|est liée à la politique monétaire et la politique budgétaire. |F
+C|est liée à la compétitivité des entreprises dans la production de biens nationaux. |V
+
+Q|Une dévaluation du taux de change national : 
+QE|Une dévaluation (hausse de E) entraine une hausse de epsilon et donc un déplacementde AD vers la droite (car baisse des exportations nettes). 
+C|entraine un déplacement de AD vers la droite. |V
+C|entraine un déplacement de AD vers la gauche. |F
+C|augmente la pente de la courbe AD. |F
+
+Q|Si des investisseurs anticipant soudainement une dévaluation sévère dans un pays qui s'est engagé à maintenir un taux de change fixe. 
+C|la banque centrale augmentera sa réserve de devisesétrangères. |F
+C|ils peuvent provoquer une crise. |V
+C|les investisseurs achèteront une grande quantité de devise nationale. |F
+
+Q|Le taux de change réel se définit comme : 
+QE|epsilon = E P* / P
+C|Le prix des biens étrangers exprimé en unité de biens domestique|V
+C|Le prix de la monnaie étrangère exprimé en unités de monnaie domestique|F
+C|Aucune des réponses n'est correcte|F
+C|Le prix des obligations étrangères exprimé en unités d'obligations domestiques|F
+
+Q|La condition de parité de taux d'intérêt est assez bien approximée par : 
+
+i_t = i*_t + ((E^e_(t+1) - E_t) / E_t)
+
+On suppose les valeurs suivantes : 
+i*_t = 0,06
+E_t = 1,5
+E^e_(t+1) = 1,53
+
+Les individus anticipent-ils une appréciation ou une dépreciation de la monnaie domestique ? 
+QE|On est à 1,5 et ils anticipent passer à 1,53, il s'agit donc d'une augmentation du taux de change et donc une dépréciation de la monnaie domestique. 
+C|Une appréciation|F
+C|Une dépréciation|V
+
+Q|La condition de parité de taux d'intérêt est assez bien approximée par : 
+
+i_t = i*_t + ((E^e_(t+1) - E_t) / E_t)
+
+On suppose les valeurs suivantes : 
+i*_t = 0,06
+E_t = 1,5
+E^e_(t+1) = 1,53
+
+Quel est le taux d'intérêt respectant la condition de parité ? 
+
+QE|Il suffit de replacer dans la formule : 
+i_t = i*_t + ((E^e_(t+1) - E_t) / E_t)
+i_t = 0,06 + ((1,53 - 1,5) / 1,5)
+i_t = 0,08 = 8%
+
+C|8%|V
+C|6%|F
+C|4%|F
+
+Q|La condition de parité de taux d'intérêt est assez bien approximée par : 
+
+i_t = i*_t + ((E^e_(t+1) - E_t) / E_t)
+
+Quelle est la relation exacte de cette condition ? 
+
+QE|Le terme de gauche (1 + i_t) montre le gain d'un placement domestique dans la monnaie domestique. En effet, Gain_placement = Prix_placement * (1 + i_t). Si le prix du titre = 100€ et i_t = 5% --> Gain_placement = 100 * (1,05) = 105€. 
+
+Le terme de droite représente le gain d'un placement à l'étranger exprimé en monnaie domestique. 
+Pourplacer à l'étranger, il doit d'abord transformer sa monnaie domestique en monnaie étrangère. Cette opération est représentée par le (1 / E_t). 
+Ensuite, le gain de ce placement estreprésenté par (1 + i*_t). 
+Pour finir, il doitretransformer son gain (en monnaie étrangère) en monnaie domestique  ce qui est représenté par le E^e_(t+1) (en effet, il devra changer sa monnaie étrangère en monnaie locale sur base du taux de change effectif l'année d'après mais, comme il ne le connait pas encore, il s'agit du taux de change attendu). 
+
+C|1 + i_t = (1 + i*_t) * E^e_(t+1) / E_t|V
+C|i_t = i*_t + ((E^e_(t+1) - E_t) / E_t)|F
+C|i_t = (1 + i*_t) * E^e_(t+1) / E_t|F
+C|1 - i_t = (1 + i*_t) * E^e_(t+1) / E_t|F
+
+Q|Considérons l'économie ouverte respectant les relations suivantes : 
+
+C = c0 + c1 * (Y - T) - c2 * i
+I = b0 + b1 * (Y - T) - b2 * i
+T = t0 + t1 * Y
+NX = x0 + x1 * Y* - x2 * (Y - T) - x3 / E
+M^s = M
+M^d = m0 + m1 * Y - m2 * i
+Y = C + I + G + NX
+M^s = M^d
+i = i* + (E^barre - E) / E (E^barre représente un E avec une barre sur la tete). 
+
+Avec les valeurs : 
+
+c0 = 150,   c1 = 0,6,   c2 = 1900
+b0 = 600,   b1 = 0,15,  b2 = 12 000
+t0 = 30,    t1 = 0,4 
+x0 = -30,   x1 = 0,1 
+x2 = 0,15,  x3 = 100
+M = 10 000
+m0 = 9100,  m1 = 0,6,   m2 = 40 000
+G = 2000,   Y* = 6000
+i* = 0,02,  E^barre = 1,27
+
+Quelles sont les valeurs d'équilibre de Y, i et E ? 
+
+QE|Pour ceci, on a 2 méthodes possibles. Soit on résoud le système de 3 équations (IS, LM, condition de parité) à 3 inconnues (Y, i et E), soit on isole E dans la condition de parité et on la replace dans l'équation IS. C'est cette deuxième méthode que je vais utiliser. 
+
+Isoler E : 
+i = i* + (E^barre - E) / E
+E(i-i*) + E = E^barre
+E (1 + i - i*) = E^barre
+E = E^barre / (1 + i - i*)
+
+Si on replace les valeurs : 
+E = 1,27 / (1 - 0,02 + i)
+
+Par la relation IS : 
+Y = c0 + c1(Y - t0 - t1Y) - c2 i 
+    + b0 + b1 * (Y - t0 - t1 Y) - b2 i + G 
+    + x0 + x1 Y* - x2 (Y - t0 - t1 Y) - x3/E
+    
+Y = 150 + 0,6(Y - 30 - 0,4Y) - 1900i
+    + 600 + 0,15 * (Y - 30 - 0,4Y) - 12 000i + 2000
+    - 30 + 600 - 0,15 * (Y - 30 - 0,4Y) - 100 / E
+    
+Y = 150 + 600 + 2000 - 30 + 600 
+    + 0,6 * (0,6Y - 30) + 0, 15 * (0,6Y - 30) - 0,15 * (0,6 Y - 30)
+    - 1900i - 12 000i
+    - 100 / E
+    
+Y = 3320 - 13 900 i + 0,6 (0,6Y - 30) - 100 / E
+Y - 0,36Y = 3302 - 13 900 i - 100 / E
+Y = (3302 - 13 900 i - 100 / E) * 1,5625 
+(ou divisé 0,64), 1,5625 étant le multiplicateur des dépenses autonomes. 
+
+Maintenant, on remplace E par l'équation trouvée précédemment : 
+Y = (3302 - 13 900 i - 100 / (1,27 / (1,02 + i))) * 1,5625
+  = (3302 - 13 900 i - 98/1,27 + 100i/1,27) * 1,5625
+  = (3224,83 - 13 979,74 i) * 1,5625
+
+Y = 5038,8 - 21 841,781 i (IS)
+
+Ensuite, on calcule l'équilibre sur le marché monétaire LM :
+
+M^s = M^d
+M^s = m0 + m1Y - m2i
+10 000 = 9000 + 0,6Y - 40 000i
+0,6Y = 19 000 - 40 000 i
+
+Y = 1500 + 66 666,667 i (LM)
+
+Ensuite système de 2 équations à 2 inconnues : 
+Y = 5038,8 - 21 841,781 i (IS)
+Y = 1500 + 66 666,667 i (LM)
+
+On égalise les 2 : 
+1500 + 66 666,667 i = 5038,8 - 21 841,781 i
+3538,8 = 88 508,448 i
+i = 0,0399 ~= 4%
+
+On replace ensuite i dans LM (ou IS) : 
+Y = 1500 + 66 666,667 * 0,04
+Y = 4165,51
+
+Et ensuite dans la condition de parité : 
+E = 1,27 / (1 - 0,02 + i)
+E = 1,27 / 1,02
+E = 1,245
+
+C|E entre 1 et 1,5
+Y environ 40 000
+i entre 3 et 4%|F
+C|E environ 1,2
+Y environ 4 000
+i entre 3 et 4%|V
+C|E entre 1,5 et 2
+Y environ 4 000
+i entre 3 et 4%|F
+C|E entre 1,5 et 2
+Y environ 4 000
+i entre 4 et 5%|F
+
+Q|Considérons l'économie ouverte respectant les relations suivantes : 
+
+C = c0 + c1 * (Y - T) - c2 * i
+I = b0 + b1 * (Y - T) - b2 * i
+T = t0 + t1 * Y
+NX = x0 + x1 * Y* - x2 * (Y - T) - x3 / E
+M^s = M
+M^d = m0 + m1 * Y - m2 * i
+Y = C + I + G + NX
+M^s = M^d
+i = i* + (E^barre - E) / E (E^barre représente un E avec une barre sur la tete). 
+
+On sait que le multiplicateur des dépenses autonome = 1,5625 = 1 / (1 - (1 - t1)(c1 + b1 - x2))
+Quelle affirmation est fausse ? 
+
+C|Si on augmente une dépense exogène (comme les dépenses gouvernementales), la production augmentera de 1,5625 * augmentation des dépenses. |F
+C|Si on augmente une dépense exogène (comme les dépenses gouvernementales), la production diminuera de 1,5625 * augmentation des dépenses. |V
+C|Il mesure le déplacement de la courbe IS dû à une augmentation de G (pour un i constant). |F
+C|Ce multiplicateur aurait été plus élevé en économie fermée. |F
+C|Si b1 ou c1 augmente, le multiplicateur augmente et donc une variation des dépenses gouvernementales aura un effet plus fort sur la production. |F
+
+Q|Considérons l'économie ouverte respectant les relations suivantes : 
+
+C = c0 + c1 * (Y - T) - c2 * i
+I = b0 + b1 * (Y - T) - b2 * i
+T = t0 + t1 * Y
+NX = x0 + x1 * Y* - x2 * (Y - T) - x3 / E
+M^s = M
+M^d = m0 + m1 * Y - m2 * i
+Y = C + I + G + NX
+M^s = M^d
+i = i* + (E^barre - E) / E (E^barre représente un E avec une barre sur la tete). 
+
+Avec les valeurs : 
+
+c0 = 150,   c1 = 0,6,   c2 = 1900
+b0 = 600,   b1 = 0,15,  b2 = 12 000
+t0 = 30,    t1 = 0,4 
+x0 = -30,   x1 = 0,1 
+x2 = 0,15,  x3 = 100
+M = 10 000
+m0 = 9100,  m1 = 0,6,   m2 = 40 000
+G = 2000,   Y* = 6000
+i* = 0,02,  E^barre = 1,27
+
+On donne également les valeurs pour Y, i et E :
+i = 4%
+Y = 4165,51
+E = 1,245
+
+Quel est l'état du solde de la balance commerciale et de la balance budgétaire ? 
+
+QE|Pour calculer le soldee budgétaire, il faut comparer les entrées (T) et les dépenses de l'Etat (G) : 
+Solde budgétaire = T - G
+T = t0 + t1 * Y
+T = 30 + 0,4 * 4165,51 
+T = 1696,204
+Solde budgétaire = 1696,204 - 2000 = -303,796
+Ce qui signifie que l'Etat a un déficit de 303,80€
+
+Pour calculer la balance commerciale, il faut regarder l'état de NX (NX = exportations - importations) : 
+NX = x0 + x1 * Y* - x2 * (Y - T) - x3 / E
+NX = -30 + 0,1 * 6000 - 0,15 * (4165,51 - 1696,204) - 100 / 1,245
+NX = 119,28
+Ce qui signifie que nous avons un excédent commercial. 
+
+C|Nous avons un déficit budgétaire et un excédent commercial|V
+C|Nous avons un déficit budgétaire et un déficit commercial|F
+C|Nous avons un excédent budgétaire et un excédent commercial|F
+C|Nous avons un excédent budgétaire et un déficit commercial|F
